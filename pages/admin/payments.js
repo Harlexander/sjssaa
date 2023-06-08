@@ -2,20 +2,17 @@ import React from 'react'
 import Admin from '../../layout/admin'
 import { ArrowLeftIcon, ArrowRightIcon, PrinterIcon } from '@heroicons/react/24/outline'
 import { AdminPaymentsTable } from '../../components/Tables/PaymentsTable'
+import DashboardTitle from '../../components/Header/DashboardTitle'
 
 const Index = () => {
   return (
     <Admin>
         <main className='p-5 sm:p-10 space-y-8'>
-            <section className='space-y-1 flex justify-between'>
-                <div>
-                    <p className='text-3xl font-manrope font-semibold'>Payments</p>
-                    <p className='font-figtree text-gray-500'>Payment records and subscriptions.</p>
-                </div>
-                <div>
-                    <button className='font-manrope bg-yellow-400 px-8 py-3 rounded shadow-xl flex items-center gap-4 text-white'>Create Ticket</button>
-                </div>
-            </section>
+
+            <DashboardTitle
+            title={"Payments"}
+            subtitle={"Payment records and subscriptions."}
+            value={"Create Ticket"}/>
 
             <section className='bg-white shadow-lg p-2 grid grid-cols-4 gap-2 rounded'>
                 <div className='bg-gray-200'>

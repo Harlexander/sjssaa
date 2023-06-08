@@ -1,21 +1,17 @@
 import React from 'react'
 import User from '../../layout/users'
 import { CameraIcon } from '@heroicons/react/24/outline';
+import DashboardTitle from '../../components/Header/DashboardTitle';
 
 const Index = () => {
   return (
     <User>
         <main className='md:p-10 p-5 space-y-8'>
-          <section className='space-y-1 flex justify-between'>
-            <div>
-              <p className='text-3xl font-manrope font-semibold'>My Profile</p>
-              <p className='font-figtree text-gray-500'>Hello Dunkwu Alexander.</p>
-            </div>
-            <div>
-              <button className='font-manrope bg-yellow-400 px-8 py-3 rounded shadow-xl text-white'>Edit Profile</button>
-            </div>
-          </section>
 
+          <DashboardTitle
+          title={"My Profile"}
+          subtitle={"Hello Dunkwu,"}
+          value={"Edit Profile"}/>
 
           <section className='sm:grid sm:grid-cols-3 gap-4 space-y-4 sm:space-y-0 py-5'>
             <div className='col-1 bg-hite p-4 rounded h-full'>
@@ -27,7 +23,7 @@ const Index = () => {
               </div>
             </div>
             <div className='col-span-2 space-y-5'>
-              <div className='bg-white rounded-lg p-4 space-y-5'>
+              <div className='bg-white rounded-lg p-4 space-y-5 shadow-xl'>
                 <p className='font-manrope'>Personal Information</p>
               
                 <div className='font-figtree divide-y text-sm'>
@@ -81,7 +77,7 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-              <div className='bg-white rounded-lg p-4 space-y-5'>
+              <div className='bg-white rounded-lg p-4 space-y-5 shadow-xl'>
                 <p className='font-manrope'>Residential Information</p>
               
                 <div className='font-figtree divide-y text-sm'>

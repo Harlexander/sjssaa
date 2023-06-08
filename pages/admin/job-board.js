@@ -2,20 +2,18 @@ import React from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import JobsCard from '../../components/Cards/JobsCard';
 import Admin from '../../layout/admin';
+import DashboardTitle from '../../components/Header/DashboardTitle';
 
 const Index = () => {
   return (
     <Admin>
         <main className='md:p-10 p-5 space-y-8'>
-          <section className='space-y-1 flex justify-between'>
-            <div>
-              <p className='text-3xl font-manrope font-semibold'>Job Board</p>
-              <p className='font-figtree text-gray-500'>Post job opportunies for members and also search for suitable opportunities.</p>
-            </div>
-            <div>
-              <button className='font-manrope bg-yellow-400 px-8 py-3 rounded shadow-xl text-white'>Post Job</button>
-            </div>
-          </section>
+
+          <DashboardTitle
+            title={"Job Board"}
+            subtitle={"Post job opportunies for members and also search for suitable opportunities."}
+            value={"Post Job"}
+            />
 
           <section className='bg-white p-2 rounded'>
             <div className='bg-gray-200 w-3/5 flex px-2 gap-2 items-center'>

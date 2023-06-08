@@ -1,20 +1,17 @@
 import React from 'react'
 import Admin from '../../layout/admin'
 import { CalendarDaysIcon, PrinterIcon } from '@heroicons/react/24/outline'
+import DashboardTitle from '../../components/Header/DashboardTitle'
 
 const Index = () => {
   return (
     <Admin>
         <main className='p-5 sm:p-10 space-y-8'>
-            <section className='space-y-1 flex justify-between'>
-                <div>
-                    <p className='text-3xl font-manrope font-semibold'>Events</p>
-                    <p className='font-figtree text-gray-500'>Manage, Create and collect data for events.</p>
-                </div>
-                <div>
-                    <button className='font-manrope bg-yellow-400 px-8 py-3 rounded shadow-xl flex items-center gap-4 text-white'>Create Event</button>
-                </div>
-            </section>
+
+            <DashboardTitle
+            title={"Events"}
+            value={"Create Event"}
+            subtitle={"Manage, Create and collect data for events."}/>
 
             <section className='grid sm:grid-cols-3 gap-6 py-4'>
                 <EventCard/>

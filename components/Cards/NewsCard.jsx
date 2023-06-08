@@ -3,7 +3,7 @@ import React from 'react'
 
 const NewsCard = ({admin}) => {
   return (
-    <div className='bg-white rounded-lg'>
+    <div className='bg-white rounded-lg shadow'>
         <img src="/87set (1).jpeg" alt="" className='rounded-t-lg w-full' />
 
         <div className='p-4 rounded z-20 space-y-3'>

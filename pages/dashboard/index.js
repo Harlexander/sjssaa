@@ -3,17 +3,18 @@ import User from '../../layout/users'
 import DashboardCard from '../../components/Cards/DashboardCard';
 import NewsTable from '../../components/Tables/NewsTable';
 import PaymentCard from '../../components/Cards/PaymentCard';
+import DashboardTitle from '../../components/Header/DashboardTitle';
 
 const Index = () => {
   return (
     <User>
       <main className='p-5 sm:p-10'>
-        <section className='space-y-1'>
-          <p className='text-3xl font-manrope font-semibold'>Overview</p>
-          <p className='font-figtree text-gray-500'>Welcome Dunkwu Alexander,</p>
-        </section>
+      
+      <DashboardTitle
+          title={"Overview"}
+          subtitle={"Welcome Dunkwu Alex,"}/>
 
-        <section className='grid my-8 md:grid-cols-4 gap-2 sm:gap-5'>
+        <section className='grid my-8 grid-cols-2 md:grid-cols-4 gap-2 sm:gap-5'>
           <DashboardCard/>
           <DashboardCard/>
           <DashboardCard/>

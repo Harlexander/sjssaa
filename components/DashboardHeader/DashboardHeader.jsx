@@ -160,7 +160,7 @@ const DashboardHeader = ({navigation, userNavigation}) => {
                         <div className='accordion-item'>
                             <a  type="button" data-bs-toggle="collapse" data-bs-target={"#"+name} aria-expanded="false"
                                 aria-controls={name}
-                                className="flex justify-between items-center gap-5 text-sm py-4 px-6 h-12 overflow-hidden text-gray-100 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                                className="flex justify-between items-center gap-5 text-sm py-4 px-6 h-12 overflow-hidden text-gray-100 text-ellipsis whitespace-nowrap rounded hover:text-yellow-600 hover:bg-yellow-50 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="primary">
                                 <div className='flex gap-5'>
                                     {icon}
                                     <span>{name}</span>
@@ -171,7 +171,7 @@ const DashboardHeader = ({navigation, userNavigation}) => {
                                     {
                                         sublink.map(({name, href}, index) => (
                                             <Link href={href} legacyBehavior key={index}>
-                                                <a key={index} className="flex justify-between items-center gap-5 text-sm py-4 px-6 mx-5 h-10 overflow-hidden text-gray-100 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                                                <a key={index} className="flex justify-between items-center gap-5 text-sm py-4 px-6 mx-5 h-10 overflow-hidden text-gray-100 text-ellipsis whitespace-nowrap rounded hover:text-yellow-600 hover:bg-yellow-50 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="primary">
                                                     <div className='flex gap-5'>
                                                         {icon}
                                                         <span>{name}</span>
@@ -186,7 +186,7 @@ const DashboardHeader = ({navigation, userNavigation}) => {
                 ) : (
                     <li className="relative" key={index}>
                         <Link href={href} legacyBehavior key={index}>
-                            <a className="flex justify-between items-center gap-5 text-sm py-4 px-6 h-12 overflow-hidden text-gray-100 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                            <a className="flex justify-between items-center gap-5 text-sm py-4 px-6 h-12 overflow-hidden text-gray-100 text-ellipsis whitespace-nowrap rounded hover:text-yellow-600 hover:bg-yellow-50 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="primary">
                                 <div className='flex gap-5'>
                                     {icon}
                                     <span>{name}</span>
@@ -207,7 +207,7 @@ const DashboardHeader = ({navigation, userNavigation}) => {
                         userNavigation.map(({name, href, icon}, index) => (
                             <li className="relative" key={index}>
                                 <Link href={href} legacyBehavior>
-                                    <a className="flex justify-between items-center gap-5 text-sm py-4 px-6 h-12 overflow-hidden text-gray-100 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                                    <a className="flex justify-between items-center gap-5 text-sm py-4 px-6 h-12 overflow-hidden text-gray-100 text-ellipsis whitespace-nowrap rounded hover:text-yellow-600 hover:bg-yellow-50 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="primary">
                                         <div className='flex gap-5'>
                                             {icon}
                                             <span>{name}</span>
@@ -218,7 +218,7 @@ const DashboardHeader = ({navigation, userNavigation}) => {
                         ))
                     }
                     <li className="relative">
-                        <a onClick={() => console.log("sign out")} className="flex items-center gap-5 text-sm py-4 px-6 h-12 overflow-hidden text-gray-100 text-ellipsis whitespace-nowrap rounded hover:text-blue-600 hover:bg-blue-50 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                        <a onClick={() => console.log("sign out")} className="flex items-center gap-5 text-sm py-4 px-6 h-12 overflow-hidden text-gray-100 text-ellipsis whitespace-nowrap rounded hover:text-yellow-600 hover:bg-yellow-50 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="primary">
                         <FontAwesomeIcon icon={faSignOut}/>
                             <span>Sign Out</span>
                         </a>

@@ -3,7 +3,7 @@ import React from 'react'
 
 const JobsCard = ({admin}) => {
   return (
-    <div className='bg-white rounded p-4 space-y-4'>
+    <div className='bg-white rounded p-4 space-y-4 shadow'>
         <p className='font-manrope font-semibold'>Senior Frontend Developer</p>
 
         <div className='font-figtree'>

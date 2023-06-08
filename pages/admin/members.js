@@ -3,20 +3,19 @@ import Admin from '../../layout/admin'
 import { MagnifyingGlassIcon, PrinterIcon } from '@heroicons/react/24/outline'
 import MembersTable from '../../components/Tables/MembersTable'
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid'
+import DashboardTitle from '../../components/Header/DashboardTitle'
 
 const Index = () => {
   return (
     <Admin>
         <main className='p-5 sm:p-10 space-y-8'>
-        <section className='space-y-1 flex justify-between'>
-            <div>
-              <p className='text-3xl font-manrope font-semibold'>Membership</p>
-              <p className='font-figtree text-gray-500'>Manage and verify members.</p>
-            </div>
-            <div>
-              <button className='font-manrope bg-yellow-400 px-4 sm:px-8 py-3 rounded shadow-xl flex items-center gap-4 text-white'>Download <PrinterIcon className='h-5'/></button>
-            </div>
-          </section>
+          
+          <DashboardTitle
+            title={"Membership"}
+            subtitle={"Manage and verify members."}
+            value={"Download"}
+            icon={<PrinterIcon className='h-5'/>}
+            />
 
             <section className='bg-white p-2 grid grid-cols-4 gap-2 rounded'>
                 <div className='bg-gray-200 col-span-2 flex px-2 gap-2 items-center'>

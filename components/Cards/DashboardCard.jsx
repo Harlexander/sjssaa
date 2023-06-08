@@ -3,11 +3,11 @@ import React from 'react'
 
 const DashboardCard = () => {
   return (
-    <div className='bg-white rounded-lg w-full p-4 space-y-4'>
+    <div className='bg-white shadow-lg rounded-lg w-full p-4 space-y-4'>
         <div className='flex justify-between'>
             <p className='font-manrope'>Title</p>
-            <div className='rounded-full p-2 bg-blue-500'>
-                <UserIcon className='h-6 text-white'/>
+            <div className='rounded-full p-2 shadow bg-yellow-400'>
+                <UserIcon className='h-5 sm:h-6 text-white'/>
             </div>
         </div>
         <div>

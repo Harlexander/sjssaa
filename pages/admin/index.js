@@ -4,15 +4,17 @@ import DashboardCard from '../../components/Cards/DashboardCard';
 import NewsTable from '../../components/Tables/NewsTable';
 import PaymentCard from '../../components/Cards/PaymentCard';
 import LatestMembers from '../../components/Tables/LatestMembers';
+import DashboardTitle from '../../components/Header/DashboardTitle';
 
 const Index = () => {
   return (
     <Admin>
       <main className='p-5 sm:p-10'>
-        <section className='space-y-1'>
-          <p className='text-3xl font-manrope font-semibold'>Overview</p>
-          <p className='font-figtree text-gray-500'>Welcome Administrator,</p>
-        </section>
+
+        <DashboardTitle
+        title={"Overview"}
+        subtitle={"Welcome Administrator,"}
+        />
 
         <section className='grid my-8 md:grid-cols-4 gap-2 sm:gap-5'>
           <DashboardCard/>

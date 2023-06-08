@@ -2,7 +2,7 @@ import React from 'react'
 
 const MembersTable = () => {
   return (
-    <div className='bg-white p-4 rounded-lg overflow-x-auto'>
+    <div className='bg-white p-4 shadow-xl rounded-lg overflow-x-auto'>
     <table className='table-responsive w-full divide-y'>
         <thead className='font-manrope text-xs uppercase text-left'>
             <tr>

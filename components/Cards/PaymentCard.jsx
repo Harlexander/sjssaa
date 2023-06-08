@@ -2,7 +2,7 @@ import React from 'react'
 
 const PaymentCard = () => {
   return (
-    <div className='h-full  w-full bg-white space-y-8 rounded-lg p-4'>
+    <div className='h-full shadow-lg  w-full shadow-xl bg-white space-y-8 rounded-lg p-4'>
         <p className='font-manrope'>Latest Transactions</p>
 
         <div className='space-y-3'>

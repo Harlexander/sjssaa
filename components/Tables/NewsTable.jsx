@@ -2,7 +2,7 @@ import React from 'react'
 
 const NewsTable = () => {
   return (
-    <div className='bg-white p-4 space-y-5 rounded-lg'>
+    <div className='bg-white p-4 space-y-5 rounded-lg shadow-xl'>
         <p className='font-manrope'>Job Postings</p>
 
         <div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 const LatestMembers = () => {
   return (
-    <div className='bg-white p-4 space-y-5 rounded-lg'>
+    <div className='bg-white shadow-xl p-4 space-y-5 rounded-lg'>
         <p className='font-manrope'>New Members</p>
 
         <div>

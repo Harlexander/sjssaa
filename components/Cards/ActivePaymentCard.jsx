@@ -15,6 +15,7 @@ const ActivePaymentCard = () => {
         <td className='py-2 px-3 whitespace-nowrap'>Due Date</td>
         <td className='py-2 px-3 whitespace-nowrap'></td>
       </tr>
+      
       <tr className='font-figtree text-sm'>
         <td className='py-2 px-3 whitespace-nowrap'>AGM Donation</td>
         <td className='py-2 px-3 '>This is for the upcomin.</td>

@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+    scroll-behavior: smooth;
+}
+@media (min-width  : 640px) {
+    nav{
+        padding-left :5rem !important;
+        padding-right : 5rem !important
+    }
+}
+
+@media ( min-width : 768px) {
+    .sidebar{
+        margin-left : 16rem
+    }
+}

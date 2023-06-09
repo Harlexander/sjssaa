@@ -6,6 +6,11 @@ import { useMutation } from 'react-query'
 import { api } from '../../lib/axios'
 import { Formik } from 'formik'
 import { useUser } from '../../lib/user'
+import BadgeError from '../Badge/BadgeError'
+import BadgeSuccess from '../Badge/BadgeSuccess'
+import {ScaleLoader} from 'react-spinners'
+import { set } from '../../lib/set'
+import { countries } from '../../lib/countries'
 
 const defaultValues = {
   firstName : "",
@@ -32,10 +37,11 @@ const Register = () => {
 
   const submitForm = (values) => {
     register.mutate(values, {
-      onSuccess: () => {
-        storeToken(token);
+      onSuccess: (data) => {
+        storeToken(data);
       }
     });
+    console.log(values)
   }
 
   console.log(register.error);
@@ -56,7 +62,17 @@ const Register = () => {
           >
           {({handleChange, handleSubmit, values}) => (
               <div className="mt-8 bg-yellow-400 p-5 md:p-10 m-5 md:m-0 rounded-lg space-y-6 font-montserrat" action="#" method="POST">
-              
+              {
+                register.isError && (
+                  <BadgeError message={register.error.response.data}/>
+                )
+              }
+              {
+                register.isSuccess && (
+                  <BadgeSuccess message={"Registration Successful, Welcome!"}/>
+                )
+              }
+
               <div className="space-y-6 rounded-md shadow-sm">
                 <div className='flex justify-between'>
                 <div>
@@ -68,7 +84,6 @@ const Register = () => {
                     value={values.firstName}
                     type="text"
                     onChange={handleChange}
-                    autoComplete="name"
                     required
                     className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900"/>
                 </div><div>
@@ -80,7 +95,6 @@ const Register = () => {
                     value={values.lastName}
                     type="text"
                     onChange={handleChange}
-                    autoComplete="name"
                     required
                     className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900"/>
                 </div>
@@ -92,9 +106,8 @@ const Register = () => {
                   <input
                     name="email"
                     value={values.email}
-                    type="text"
+                    type="email"
                     onChange={handleChange}
-                    autoComplete="name"
                     required
                     className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900"/>
                 </div>
@@ -107,7 +120,6 @@ const Register = () => {
                     value={values.mobile}
                     type="text"
                     onChange={handleChange}
-                    autoComplete="name"
                     required
                     className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900"/>
                 </div>
@@ -120,7 +132,6 @@ const Register = () => {
                     value={values.profession}
                     type="text"
                     onChange={handleChange}
-                    autoComplete="name"
                     required
                     className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900"/>
                 </div>
@@ -133,7 +144,6 @@ const Register = () => {
                     value={values.city}
                     type="text"
                     onChange={handleChange}
-                    autoComplete="name"
                     required
                     className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900"/>
                 </div>
@@ -146,7 +156,6 @@ const Register = () => {
                     value={values.state}
                     type="text"
                     onChange={handleChange}
-                    autoComplete="name"
                     required
                     className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900"/>
                 </div>
@@ -154,27 +163,35 @@ const Register = () => {
                   <label htmlFor="email-address" className="">
                     Country
                   </label>
-                  <input
+                  <select
                     name="country"
                     value={values.country}
-                    type="text"
                     onChange={handleChange}
-                    autoComplete="name"
                     required
-                    className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900"/>
+                    className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900">
+                    {
+                        countries.map(country => (
+                          <option value={country} key={country}>{country}</option>
+                        ))
+                    }
+                </select>
                 </div>
                 <div>
                   <label htmlFor="email-address" className="">
                     Set
                   </label>
-                  <input
+                  <select
                     name="set"
                     value={values.set}
-                    type="text"
                     onChange={handleChange}
-                    autoComplete="name"
                     required
-                    className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900"/>
+                    className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900">
+                      {
+                        set.map(year => (
+                          <option value={year} key={year}>{year}</option>
+                        ))
+                      }
+                </select>
                 </div>
                 <div>
                   <label htmlFor="password" className="">
@@ -217,16 +234,26 @@ const Register = () => {
                   onClick={handleSubmit}
                   className="group relative flex w-full justify-center rounded-md border border-transparent bg-yellow-700 py-2 px-4 text-sm font-medium text-white hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
-                  <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                    <FontAwesomeIcon icon={faLock} className="h-5 w-5 text-yellow-800 group-hover:text-indigo-400" aria-hidden="true" />
-                  </span>
-                  Register
+                {
+                  register.isLoading ? (
+                  <div className=''>
+                      <ScaleLoader height={18} color='white'/>
+                    </div>
+                  ) : (
+                    <div className='relative flex w-full justify-center'>
+                      <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <FontAwesomeIcon icon={faLock} className="h-5 w-5 text-yellow-800 group-hover:text-indigo-400" aria-hidden="true" />
+                      </span>
+                      Register
+                    </div>
+                  )
+                }
                 </button>
               </div>
               <hr/>
               <div className='text-center text-yellow-900 font-bold'>
-                <Link href="register">
-                  <a>Register as a member</a>
+                <Link href="/login">
+                  <a>Login as a member</a>
                 </Link>
               </div>
             </div>

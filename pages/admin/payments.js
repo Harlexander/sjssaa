@@ -3,6 +3,7 @@ import Admin from '../../layout/admin'
 import { ArrowLeftIcon, ArrowRightIcon, PrinterIcon } from '@heroicons/react/24/outline'
 import { AdminPaymentsTable } from '../../components/Tables/PaymentsTable'
 import DashboardTitle from '../../components/Header/DashboardTitle'
+import { set } from '../../lib/set'
 
 const Index = () => {
   return (
@@ -14,25 +15,27 @@ const Index = () => {
             subtitle={"Payment records and subscriptions."}
             value={"Create Ticket"}/>
 
-            <section className='bg-white shadow-lg p-2 grid grid-cols-4 gap-2 rounded'>
+            <section className='bg-white shadow-lg p-2 grid grid-cols-3 gap-2 rounded'>
                 <div className='bg-gray-200'>
                     <select className='font-figtree bg-transparent border-0 w-full text-sm rounded px-2 py-1'>
-                        <option>Filter By Status</option>
+                        <option>Status</option>
+                        <option>Success</option>
+                        <option>Failed</option>
                     </select>
                 </div>
                 <div className='bg-gray-200'>
                     <select className='font-figtree bg-transparent border-0 w-full text-sm rounded px-2 py-1'>
-                        <option>Filter By Amount</option>
+                        <option>Purpose</option>
                     </select>
                 </div>
                 <div className='bg-gray-200'>
                     <select className='font-figtree bg-transparent border-0 w-full text-sm rounded px-2 py-1'>
-                        <option>Filter By Purpose</option>
-                    </select>
-                </div>
-                <div className='bg-gray-200'>
-                    <select className='font-figtree bg-transparent border-0 w-full text-sm rounded px-2 py-1'>
-                        <option>Filter By Set</option>
+                        <option>Set</option>
+                        {
+                            set.map((set) => (
+                                <option value={set} key={set}>{set}</option>
+                            ))
+                        }
                     </select>
                 </div>
           </section>

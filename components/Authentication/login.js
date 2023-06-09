@@ -6,6 +6,9 @@ import { useMutation } from 'react-query'
 import { api } from '../../lib/axios'
 import { Formik } from 'formik'
 import { useUser } from '../../lib/user'
+import BadgeError from '../Badge/BadgeError'
+import BadgeSuccess from '../Badge/BadgeSuccess'
+import { ScaleLoader } from 'react-spinners'
 
 const defaultValues = {
   email : "",
@@ -18,7 +21,7 @@ const Login = () => {
   const login = useMutation( async values => {
     const { data } = await api.post("/login", values);
     return data;
-  });
+  }, { retry : 1 });
 
   const submitForm = (values) => {
 
@@ -28,6 +31,8 @@ const Login = () => {
       }
     });
   }
+
+  console.log(login.isError && login.error.response.data)
 
   return (
       <>
@@ -46,7 +51,16 @@ const Login = () => {
           >
           {({handleChange, handleSubmit, values}) => (
           <form className="mt-8 bg-yellow-400 p-5 md:p-10 m-5 md:m-0 rounded-lg space-y-6 font-montserrat" action="#" method="POST">
-            <input type="hidden" name="remember" defaultValue="true" />
+           {
+            login.isError && (
+              <BadgeError message={"Incorrect Username or Password"}/>
+            )
+           }
+           {
+            login.isSuccess && (
+              <BadgeSuccess message={"Login Successful, Thank you!"}/>
+            )
+           }
             <div className="space-y-6 rounded-md shadow-sm">
               <div>
                 <label htmlFor="email-address" className="">
@@ -99,18 +113,29 @@ const Login = () => {
             <div>
               <button
                 type="submit"
+                disabled={login.isLoading}
                 onClick={handleSubmit}
-                className="group relative flex w-full justify-center rounded-md border border-transparent bg-yellow-700 py-2 px-4 text-sm font-medium text-white hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="group relative w-full rounded-md border border-transparent bg-yellow-700 py-2 px-4 text-sm font-medium text-white hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
-                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <FontAwesomeIcon icon={faLock} className="h-5 w-5 text-yellow-800 group-hover:text-indigo-400" aria-hidden="true" />
-                </span>
-                Sign in
+                {
+                  login.isLoading ? (
+                  <div className=''>
+                      <ScaleLoader height={18} color='white'/>
+                    </div>
+                  ) : (
+                    <div className='relative flex w-full justify-center'>
+                      <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                        <FontAwesomeIcon icon={faLock} className="h-5 w-5 text-yellow-800 group-hover:text-indigo-400" aria-hidden="true" />
+                      </span>
+                      Sign in
+                    </div>
+                  )
+                }
               </button>
             </div>
             <hr/>
             <div className='text-center text-yellow-900 font-bold'>
-              <Link href="login">
+              <Link href="/register">
                 <a>Register as a member</a>
               </Link>
             </div>

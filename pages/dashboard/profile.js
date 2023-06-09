@@ -2,15 +2,18 @@ import React from 'react'
 import User from '../../layout/users'
 import { CameraIcon } from '@heroicons/react/24/outline';
 import DashboardTitle from '../../components/Header/DashboardTitle';
+import { useUser } from '../../lib/user';
 
 const Index = () => {
+  const { user } = useUser();
+
   return (
     <User>
         <main className='md:p-10 p-5 space-y-8'>
 
           <DashboardTitle
           title={"My Profile"}
-          subtitle={"Hello Dunkwu,"}
+          subtitle={`Hello ${user.lastName},`}
           value={"Edit Profile"}/>
 
           <section className='sm:grid sm:grid-cols-3 gap-4 space-y-4 sm:space-y-0 py-5'>
@@ -32,7 +35,7 @@ const Index = () => {
                       FirstName
                     </p>
                     <p className='text-right'>
-                      Dunkwu Alexander
+                      {user.firstName}
                     </p>
                   </div>
                   <div className='grid grid-cols-2 py-4'>
@@ -40,7 +43,7 @@ const Index = () => {
                       Last Name
                     </p>
                     <p className='text-right'>
-                      Dunkwu Alexander
+                      {user.lastName}
                     </p>
                   </div>
                   <div className='grid grid-cols-2 py-4'>
@@ -48,7 +51,7 @@ const Index = () => {
                       Email
                     </p>
                     <p className='text-right'>
-                      Dunkwu Alexander
+                      {user.email}
                     </p>
                   </div>
                   <div className='grid grid-cols-2 py-4'>
@@ -56,7 +59,7 @@ const Index = () => {
                       Mobile Number
                     </p>
                     <p className='text-right'>
-                      Dunkwu Alexander
+                     {user.mobile}
                     </p>
                   </div>
                   <div className='grid grid-cols-2 py-4'>
@@ -64,7 +67,7 @@ const Index = () => {
                       Set
                     </p>
                     <p className='text-right'>
-                      Dunkwu Alexander
+                      {user.set}
                     </p>
                   </div>
                   <div className='grid grid-cols-2 py-4'>
@@ -72,7 +75,7 @@ const Index = () => {
                       Profession
                     </p>
                     <p className='text-right'>
-                      Dunkwu Alexander
+                      {user.profession}
                     </p>
                   </div>
                 </div>
@@ -86,7 +89,7 @@ const Index = () => {
                       City
                     </p>
                     <p className='text-right'>
-                      Dunkwu Alexander
+                      {user.city}
                     </p>
                   </div>
                   <div className='grid grid-cols-2 py-4'>
@@ -94,7 +97,7 @@ const Index = () => {
                       State
                     </p>
                     <p className='text-right'>
-                      Dunkwu Alexander
+                      {user.state}
                     </p>
                   </div>
                   <div className='grid grid-cols-2 py-4'>
@@ -102,7 +105,7 @@ const Index = () => {
                       Country
                     </p>
                     <p className='text-right'>
-                      Dunkwu Alexander
+                      {user.country}
                     </p>
                   </div>
                 </div>

@@ -11,8 +11,8 @@ module.exports = {
       pry : "#E8A902",
     },
     fontFamily : {
-      'nunito' : ['Nunito', 'sans-serif'],
-      'montserrat' : ['Montserrat', 'sans-serif'],
+      'nunito' : ['figtree', 'sans-serif'],
+      'montserrat' : ['figtree', 'sans-serif'],
       'primary' : ['DM Serif Display', 'sans-serif'],
       'figtree' : ['figtree', 'sans-serif'],
       'manrope' : ['manrope', 'sans-serif']

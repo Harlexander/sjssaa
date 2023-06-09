@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon, PrinterIcon } from '@heroicons/react/24/outline'
 import MembersTable from '../../components/Tables/MembersTable'
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid'
 import DashboardTitle from '../../components/Header/DashboardTitle'
+import { set } from '../../lib/set'
 
 const Index = () => {
   return (
@@ -24,12 +25,17 @@ const Index = () => {
                 </div>
                 <div className='bg-gray-200'>
                     <select className='font-figtree bg-transparent border-0 w-full text-sm rounded px-2 py-1'>
-                        <option>Filter By Set</option>
+                        <option>Set</option>
+                        {
+                            set.map((set) => (
+                                <option value={set} key={set}>{set}</option>
+                            ))
+                        }
                     </select>
                 </div>
                 <div className='bg-gray-200'>
                     <select className='font-figtree bg-transparent border-0 w-full text-sm rounded px-2 py-1'>
-                        <option>Filter By Profession</option>
+                        <option>Profession</option>
                     </select>
                 </div>
           </section>

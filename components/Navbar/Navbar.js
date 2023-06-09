@@ -100,7 +100,7 @@ const IndexNavbar = () => {
         <Navbar.Toggle />
     </div>
     <Navbar.Collapse>
-        {/* {
+        {
             routes.map((item, index) => {
             if(item.title === "EXCOS" || item.title === "ABOUT US"){
                     return(
@@ -120,7 +120,7 @@ const IndexNavbar = () => {
                     )
                 }
             })
-        } */}
+        }
     </Navbar.Collapse>
     </Navbar>
   )
@@ -136,13 +136,12 @@ const NavDropdown = ({label, sublinks}) => {
     >
         {
             sublinks.map(({title, link}, index )=> (
-               <Link href={link} key={index}>
                     <Dropdown.Item
                     style={{ fontFamily : "Montserrat"}}>
-                        {title}
+                        <Link href={link} key={index}>
+                            {title}
+                        </Link> 
                     </Dropdown.Item>               
-               </Link> 
-
             ))
         }
     </Dropdown>

@@ -22,7 +22,7 @@ const Index = () => {
                 <button className="inline-block shadow-xl rounded-full absolute bottom-0 right-0 bg-yellow-400 text-white p-4">
                   <CameraIcon className='h-8'/>
                 </button>
-                <img src='/bot-1.jpeg' className='rounded-full'/>
+                <img src='https://cdn-icons-png.flaticon.com/512/149/149071.png' className='rounded-full'/>
               </div>
             </div>
             <div className='col-span-2 space-y-5'>

@@ -169,6 +169,7 @@ const Register = () => {
                     onChange={handleChange}
                     required
                     className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900">
+                      <option>Select Country</option>
                     {
                         countries.map(country => (
                           <option value={country} key={country}>{country}</option>
@@ -186,6 +187,8 @@ const Register = () => {
                     onChange={handleChange}
                     required
                     className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900">
+                     <option>Select Set</option>
+
                       {
                         set.map(year => (
                           <option value={year} key={year}>{year}</option>

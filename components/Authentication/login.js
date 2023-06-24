@@ -32,7 +32,7 @@ const Login = () => {
     });
   }
 
-  console.log(login.isError && login.error.response.data)
+  console.log(login.error)
 
   return (
       <>

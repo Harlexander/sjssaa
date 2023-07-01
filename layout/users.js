@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
 import { ArrowRightCircleIcon, CreditCardIcon, CurrencyDollarIcon, DocumentDuplicateIcon, ExclamationCircleIcon, HomeIcon, UserCircleIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays, faCashRegister, faChartArea, faCube, faEnvelope, faHeadphones, faHeart, faHomeAlt, faMoneyCheckDollar, faNewspaper, faStar, faUpload, faUser, faUserAlt, faUserCheck, faUserDoctor } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays, faCashRegister, faChartArea, faCube, faEnvelope, faHeadphones, faHeart, faHomeAlt, faMoneyCheckDollar, faNewspaper, faStar, faUpload, faUser, faUserAlt, faUserCheck, faUserDoctor, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { UserProvider } from "../lib/user";
 
 const user = {
@@ -18,6 +18,11 @@ const navigation = [
     name: 'Overview', 
     href: '/dashboard', 
     icon:  <FontAwesomeIcon icon={faHomeAlt}/>, current: true 
+  },
+  { 
+    name: 'Members', 
+    href: '/dashboard/members', 
+    icon:  <FontAwesomeIcon icon={faUserGroup}/>, current: true 
   },
   { 
     name: 'Subscriptions', 

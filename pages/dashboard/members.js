@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react'
-import Admin from '../../layout/admin'
 import { MagnifyingGlassIcon, PrinterIcon } from '@heroicons/react/24/outline'
 import MembersTable from '../../components/Tables/MembersTable'
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/20/solid'
 import DashboardTitle from '../../components/Header/DashboardTitle'
 import { set } from '../../lib/set'
-import { useQuery, useQueryClient } from 'react-query'
-import { api } from '../../lib/axios'
 import { useUser } from '../../lib/user'
-import { filterBySet, searchByName } from '../../lib/searchFunction'
+import { useQuery } from 'react-query'
+import { api } from '../../lib/axios'
+import User from '../../layout/users'
+import { searchByName } from '../../lib/searchFunction'
 
-const Index = () => {2
+const Index = () => {
     const { token } = useUser();
     const [ current, setCurrent ] = useState(1);
     const [ searchResult, setSearchResult ] = useState([]);
 
-    const { data = {} , isLoading, refetch } = useQuery(["members"], async () => {
-        const { data } = await api.get("/members", { headers : { Authorization : `Bearer ${token} ` }, params : { page : current }});
+    const { data = {}, isLoading } = useQuery(["members"], async () => {
+        const { data } = await api.get("/members", { headers : { Authorization : `Bearer ${token} ` }});
   
         return data;
     }, {enabled : (token !== null)});
@@ -35,18 +35,9 @@ const Index = () => {2
         }
     }
 
-    const filter = (e) => {
-        if(e.target.value.length > 0 ){
-            console.log(e.target.value)
-            const result = filterBySet(e.target.value, data.data);
-            setSearchResult(result);
-        }else{
-            setSearchResult([]);
-        }
-    }
 
   return (
-    <Admin>
+    <User>
         <main className='p-5 sm:p-10 space-y-8'>
           
           <DashboardTitle
@@ -59,10 +50,10 @@ const Index = () => {2
             <section className='bg-white p-2 grid grid-cols-4 gap-2 rounded'>
                 <div className='bg-gray-200 col-span-2 flex px-2 gap-2 items-center'>
                     <MagnifyingGlassIcon className='h-4'/>
-                    <input onChange={search}  className='font-figtree bg-transparent w-full text-sm rounded px-2 py-1' placeholder='Search'/>
+                    <input onChange={search} className='font-figtree bg-transparent w-full text-sm rounded px-2 py-1' placeholder='Search'/>
                 </div>
                 <div className='bg-gray-200'>
-                    <select onChange={filter} className='font-figtree bg-transparent border-0 w-full text-sm rounded px-2 py-1'>
+                    <select className='font-figtree bg-transparent border-0 w-full text-sm rounded px-2 py-1'>
                         <option>Set</option>
                         {
                             set.map((set) => (
@@ -83,9 +74,9 @@ const Index = () => {2
                 )
             }
 
-            <MembersTable data={data.data || []} isLoading={isLoading} admin={true}/>
+          <MembersTable data={data.data || []} isLoading={isLoading}/>
 
-            <div className='font-figtree flex justify-between py-5'>
+          <div className='font-figtree flex justify-between py-5'>
                 <p className='bg-white px-4 py-2 rounded-lg'>Page {data.current_page} of {data.last_page}</p>
 
                 <div className='space-x-2'>
@@ -99,7 +90,7 @@ const Index = () => {2
             </div>
           </section>
         </main>
-    </Admin>
+    </User>
   )
 }
 

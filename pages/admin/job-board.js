@@ -3,8 +3,19 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import JobsCard from '../../components/Cards/JobsCard';
 import Admin from '../../layout/admin';
 import DashboardTitle from '../../components/Header/DashboardTitle';
+import { api } from '../../lib/axios';
+import { useQuery } from 'react-query';
+import { useUser } from '../../lib/user';
 
 const Index = () => {
+  const { token } = useUser();
+
+  const jobs = useQuery(["job-board"], async () => {
+      const { data } = await api.get("/job-board", { headers : { Authorization : `Bearer ${token} ` } });
+
+      return data;
+  }, {enabled : (token !== null)});
+
   return (
     <Admin>
         <main className='md:p-10 p-5 space-y-8'>
@@ -23,13 +34,22 @@ const Index = () => {
           </section>
 
           <section className='grid sm:grid-cols-3 gap-3'>
-            <JobsCard admin={true}/>
-            <JobsCard admin={true}/>
-            <JobsCard admin={true}/>
-            <JobsCard admin={true}/>
-            <JobsCard admin={true}/>
-            <JobsCard admin={true}/>
-            <JobsCard admin={true}/>
+          {        
+              jobs.isSuccess && (
+                jobs.data.map(({title, org, exp_date, created_at, description, contact, link}, index) => (
+                  <JobsCard
+                    key={index}
+                    title={title}
+                    org={org}
+                    exp_date={exp_date}
+                    created_at={created_at}
+                    contact={contact}
+                    link={link}
+                    admin={true}
+                    description={description}/>
+                ))
+              )
+          }
           </section>
         </main>    
     </Admin>

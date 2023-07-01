@@ -3,9 +3,44 @@ import User from '../../layout/users'
 import { CameraIcon } from '@heroicons/react/24/outline';
 import DashboardTitle from '../../components/Header/DashboardTitle';
 import { useUser } from '../../lib/user';
+import { handleUpload } from '../../lib/uploadImg';
+import { api } from '../../lib/axios';
+import { QueryClient, useMutation } from 'react-query';
+import { imgHost } from '../../lib/imgHost';
 
 const Index = () => {
-  const { user } = useUser();
+  const { user, token } = useUser();
+
+  async function handleImageChange(event)  {
+    const file = event.target.files[0];
+
+    mutate(file);
+   }
+   console.log(user);
+
+   const updateProfilePicture = async (file)  => {
+    const file_path = await handleUpload(file);
+
+    console.log(file_path);
+
+    const { data } = await api.put("/user/update", { img : file_path }, {
+      headers : {
+        Authorization : `Bearer ${token}`
+      }
+    })
+
+    window.location.reload();
+
+    return data;
+   }
+
+   const { isLoading, data, error, mutate } = useMutation(async (file) => {
+    const { data } = await updateProfilePicture(file);
+
+    return data;
+   });
+
+   console.log(data, error)
 
   return (
     <User>
@@ -17,12 +52,15 @@ const Index = () => {
           value={"Edit Profile"}/>
 
           <section className='sm:grid sm:grid-cols-3 gap-4 space-y-4 sm:space-y-0 py-5'>
-            <div className='col-1 bg-hite p-4 rounded h-full'>
-              <div className='relative mx-auto'>
-                <button className="inline-block shadow-xl rounded-full absolute bottom-0 right-0 bg-yellow-400 text-white p-4">
-                  <CameraIcon className='h-8'/>
-                </button>
-                <img src='https://cdn-icons-png.flaticon.com/512/149/149071.png' className='rounded-full'/>
+            <div className='col-1 p-4 rounded w-full'>
+              <div className='relative mx-auto w-full'>
+
+              <form className='bg-pry shadow rounded-full w-14 h-14 absolute flex items-center justify-center bottom-0 right-0'>
+                <input type="file" accept='.jpg,.png,.jpeg,.svg' onChange={handleImageChange} className='opacity-0 absolute h-full w-full' />
+                <CameraIcon className='h-7 text-white'/>
+              </form>                
+
+                <img src={user.img ? (imgHost+user.img) : "https://cdn-icons-png.flaticon.com/512/149/149071.png"} className='rounded-full border-4 shadow-xl border-pry object-cover mx-auto h-72 w-72'/>
               </div>
             </div>
             <div className='col-span-2 space-y-5'>
@@ -34,7 +72,7 @@ const Index = () => {
                     <p>
                       FirstName
                     </p>
-                    <p className='text-right'>
+                    <p className='text-right font-semibold'>
                       {user.firstName}
                     </p>
                   </div>
@@ -42,7 +80,7 @@ const Index = () => {
                     <p>
                       Last Name
                     </p>
-                    <p className='text-right'>
+                    <p className='text-right font-semibold'>
                       {user.lastName}
                     </p>
                   </div>
@@ -50,7 +88,7 @@ const Index = () => {
                     <p>
                       Email
                     </p>
-                    <p className='text-right'>
+                    <p className='text-right font-semibold'>
                       {user.email}
                     </p>
                   </div>
@@ -58,7 +96,7 @@ const Index = () => {
                     <p>
                       Mobile Number
                     </p>
-                    <p className='text-right'>
+                    <p className='text-right font-semibold'>
                      {user.mobile}
                     </p>
                   </div>
@@ -66,7 +104,7 @@ const Index = () => {
                     <p>
                       Set
                     </p>
-                    <p className='text-right'>
+                    <p className='text-right font-semibold'>
                       {user.set}
                     </p>
                   </div>
@@ -74,7 +112,7 @@ const Index = () => {
                     <p>
                       Profession
                     </p>
-                    <p className='text-right'>
+                    <p className='text-right font-semibold'>
                       {user.profession}
                     </p>
                   </div>
@@ -88,7 +126,7 @@ const Index = () => {
                     <p>
                       City
                     </p>
-                    <p className='text-right'>
+                    <p className='text-right font-semibold'>
                       {user.city}
                     </p>
                   </div>
@@ -96,7 +134,7 @@ const Index = () => {
                     <p>
                       State
                     </p>
-                    <p className='text-right'>
+                    <p className='text-right font-semibold'>
                       {user.state}
                     </p>
                   </div>
@@ -104,7 +142,7 @@ const Index = () => {
                     <p>
                       Country
                     </p>
-                    <p className='text-right'>
+                    <p className='text-right font-semibold'>
                       {user.country}
                     </p>
                   </div>

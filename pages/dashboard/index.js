@@ -1,13 +1,23 @@
 import React from 'react'
 import User from '../../layout/users'
 import DashboardCard from '../../components/Cards/DashboardCard';
-import NewsTable from '../../components/Tables/NewsTable';
+import JobsTable from '../../components/Tables/JobsTable';
 import PaymentCard from '../../components/Cards/PaymentCard';
 import DashboardTitle from '../../components/Header/DashboardTitle';
 import { useUser } from '../../lib/user';
 import {UserGroupIcon, CakeIcon, BriefcaseIcon, BanknotesIcon} from '@heroicons/react/24/outline'
+import { useQuery } from 'react-query';
+import { api } from '../../lib/axios';
 const Index = () => {
-  const { user } = useUser();
+  const { user, token } = useUser();
+
+  const { isLoading, data = {}, isSuccess } = useQuery(["statistics"], async () => {
+    const { data } = await api.get("/stats", { headers : { Authorization : `Bearer ${token} ` } });
+
+    return data;
+  }, {enabled : (token !== null)});
+
+
 
   return (
     <User>
@@ -15,23 +25,23 @@ const Index = () => {
       
       <DashboardTitle
           title={"Overview"}
-          subtitle={"Welcome "+user.firstName + " " + user.lastName + ","}/>
+          subtitle={isSuccess && "Welcome "+user.firstName + " " + user.lastName + ","}/>
 
         <section className='grid my-8 grid-cols-2 md:grid-cols-4 gap-2 sm:gap-5'>
           <DashboardCard
           title={"Total Members"}
           icon={<UserGroupIcon className='h-5 sm:h-6 text-white'/>}
-          value={20}
+          value={data.memberCount || 0}
           />
           <DashboardCard
             title={"Upcoming Events"}
             icon={<CakeIcon className='h-5 sm:h-6 text-white'/>}
-            value={1}
+            value={data.upcomingEventCount || 0}
             />
           <DashboardCard
             title={"Jobs Postings"}
             icon={<BriefcaseIcon className='h-5 sm:h-6 text-white'/>}
-            value={10}
+            value={data.jobCount || 0}
             />
           <DashboardCard
             title={"Total Payments"}
@@ -42,7 +52,7 @@ const Index = () => {
 
         <section className='md:grid space-y-4 sm:space-y-0 md:grid-cols-3 gap-5'>
           <div className='col-span-2'>
-             <NewsTable/>
+             <JobsTable data={data.jobs} isLoading={isLoading}/>
           </div>
           <div className='col-1'>
             <PaymentCard/>

@@ -4,7 +4,7 @@ import { Fade } from 'react-awesome-reveal'
 const ResponsilbiltySection = () => {
   return (
     
-    <div className="flex flex-col space-y-20 items-center justify-center  pt-20 pb-24 bg-[#FED253]">
+    <div className="flex flex-col space-y-20 items-center justify-center  pt-20 pb-24 bg-[#800000] text-white">
         <Fade direction='up'>
           <p className="text-4xl font-primary">Our Responsibility</p>
         </Fade>

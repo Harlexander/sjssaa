@@ -1,6 +1,8 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import '../styles/globals.css'
 import { UserProvider } from '../lib/user';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 function MyApp({ Component, pageProps }) {
 
@@ -12,7 +14,7 @@ function MyApp({ Component, pageProps }) {
   return(    
         <QueryClientProvider client={queryClient}>
           <UserProvider>
-            <Component {...pageProps} />    
+              <Component {...pageProps} />    
           </UserProvider>
         </QueryClientProvider> 
     )

@@ -1,7 +1,6 @@
 import React from 'react'
 import Admin from '../../layout/admin'
 import DashboardCard from '../../components/Cards/DashboardCard';
-import NewsTable from '../../components/Tables/NewsTable';
 import PaymentCard from '../../components/Cards/PaymentCard';
 import LatestMembers from '../../components/Tables/LatestMembers';
 import DashboardTitle from '../../components/Header/DashboardTitle';

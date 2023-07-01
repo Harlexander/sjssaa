@@ -19,7 +19,6 @@ const Index = () => {
 
     mutate(file);
    }
-   console.log(user);
 
    const updateProfilePicture = async (file)  => {
     const file_path = await handleUpload(file);
@@ -37,9 +36,11 @@ const Index = () => {
     const { data } = await updateProfilePicture(file);
 
     return data;
+   }, {
+    onSuccess : () => {
+      window.location.reload();
+    }
    });
-
-   console.log(isLoading, error)
 
   return (
     <User>

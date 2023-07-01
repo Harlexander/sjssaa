@@ -15,7 +15,6 @@ import BadgeSuccess from '../../components/Badge/BadgeSuccess';
 import { imgHost } from '../../lib/imgHost'
 import moment from 'moment'
 import { AdminEventsTable } from '../../components/Tables/EventsTable'
-import PDFViewerComponent from '../../components/PDF/EventRegPDF'
 
 const Index = () => {
     const { token } = useUser();

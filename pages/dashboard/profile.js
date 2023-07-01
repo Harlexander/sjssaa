@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import User from '../../layout/users'
 import { CameraIcon } from '@heroicons/react/24/outline';
 import DashboardTitle from '../../components/Header/DashboardTitle';
@@ -7,9 +7,12 @@ import { handleUpload } from '../../lib/uploadImg';
 import { api } from '../../lib/axios';
 import { QueryClient, useMutation } from 'react-query';
 import { imgHost } from '../../lib/imgHost';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const Index = () => {
   const { user, token } = useUser();
+  const [ppUload, setPpUload] = useState(false);
 
   async function handleImageChange(event)  {
     const file = event.target.files[0];
@@ -21,15 +24,11 @@ const Index = () => {
    const updateProfilePicture = async (file)  => {
     const file_path = await handleUpload(file);
 
-    console.log(file_path);
-
-    const { data } = await api.put("/user/update", { img : file_path }, {
+    const data = await api.put("/user/update", { img : file_path }, {
       headers : {
         Authorization : `Bearer ${token}`
       }
-    })
-
-    window.location.reload();
+    });
 
     return data;
    }
@@ -40,7 +39,7 @@ const Index = () => {
     return data;
    });
 
-   console.log(data, error)
+   console.log(isLoading, error)
 
   return (
     <User>
@@ -55,6 +54,10 @@ const Index = () => {
             <div className='col-1 p-4 rounded w-full'>
               <div className='relative mx-auto w-full'>
 
+                {
+                  isLoading && (<FontAwesomeIcon icon={faSpinner} spin className='text-5xl absolute w-full top-[40%] text-pry'/>)
+                }
+              
               <form className='bg-pry shadow rounded-full w-14 h-14 absolute flex items-center justify-center bottom-0 right-0'>
                 <input type="file" accept='.jpg,.png,.jpeg,.svg' onChange={handleImageChange} className='opacity-0 absolute h-full w-full' />
                 <CameraIcon className='h-7 text-white'/>

@@ -81,8 +81,9 @@ const Index = () => {
             <section className='grid sm:grid-cols-3 gap-6 py-4'>
               {
                 news.isSuccess && (
-                  news.data.map(({id, title, content, created_at, image, member : {firstName, lastName} } ) => (
+                  news.data.map(({id, title, content, created_at, image, member : {firstName, lastName} }, index) => (
                     <NewsCard
+                    key={index}
                     title={title}
                     content={content}
                     image={image}

@@ -34,7 +34,7 @@ const EventsTable = ({data, isLoading}) => {
                 {
                     data.length === 0 && (
                         <tr>
-                         <td colSpan={5} className='text-center py-16 text-lg'>You've not registered for an event</td>
+                         <td colSpan={5} className='text-center py-16 text-lg'>You&apos;ve not registered for an event</td>
                         </tr>
                     )
                 }
@@ -78,7 +78,7 @@ export const AdminEventsTable = ({data = []}) => {
               <tbody className='divide-y font-figtree text-sm'>
                   {
                       data.map(({ event_id, title, date, reg_fee, set, registered_members }, index) => (
-                          <tr className=''>
+                          <tr className='' key={event_id}>
                               <td className='py-5 whitespace-nowrap pr-4'>{index+1}</td>
                               <td className='py-5 whitespace-nowrap pr-4'>{title}</td>
                               <td className='py-5 whitespace-nowrap pr-4 capitalize'>{set}</td>

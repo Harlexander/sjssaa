@@ -51,6 +51,8 @@ const Index = () => {
     return data;
   }, {enabled : (token !== null)});
 
+  console.log(news.data)
+
 
   const { isLoading, mutate, data, error, isSuccess } = useMutation(async (values) => {
     const img_url = await handleUpload(values.image);
@@ -69,13 +71,13 @@ const Index = () => {
       <MyModal
       isOpen={isOpen}
       title={"Post News"}
-      body={<Form 
+      body={<NewsForm 
         handleChange={handleChange} 
         formValues={formValues}
         handleImageChange={handleImageChange}
         isSuccess={isSuccess}
       />}
-      button={<Button 
+      button={<NewsButton 
         handleSubmit={handleSubmit}
         isLoading={isLoading}
       />}
@@ -106,6 +108,19 @@ const Index = () => {
               )
             }
             {
+              news.isSuccess && 
+                news.data.length < 1 && (
+                  <div className='bg-white h-[80vh] w-full col-span-3 flex items-center justify-center rounded-xl'>
+                    <div className='space-y-2'>
+                      <p className='font-figtree text-center text-2xl font-bold'>No News Update</p>
+                      <p className='font-figtree mx-auto text-center text-sm sm:w-2/3'>Post news update for members on ongoing situations of the association, school, country and other related topics to the association</p>
+                    
+                      <button onClick={closeModal} className='flex mx-auto items-center whitespace-nowrap text-sm sm:text-md gap-1.5 sm:gap-3 font-manrope bg-yellow-400 px-4 sm:px-12 py-2 sm:py-2 rounded shadow-xl text-white'>Post News</button>
+                    </div>
+                  </div>
+                )
+            }
+            {
               news.isLoading && (
                 Array(3).fill("").map((indexes, index) => (
                   <div key={index} className='bg-white shadow-lg p-4 rounded-lg'>
@@ -123,7 +138,7 @@ const Index = () => {
   )
 }
 
-const Button = ({handleSubmit, isLoading}) => (
+export const NewsButton = ({handleSubmit, isLoading}) => (
   <button
   onClick={handleSubmit}
   type="button"
@@ -136,7 +151,7 @@ const Button = ({handleSubmit, isLoading}) => (
 )
 
 
-const Form = ({handleChange, formValues, handleImageChange, isSuccess}) => {
+export const NewsForm = ({handleChange, formValues, handleImageChange, isSuccess}) => {
   return(
     <div className='space-y-5 py-5'>
       {

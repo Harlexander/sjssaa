@@ -16,7 +16,7 @@ const user = {
 const navigation = [
   { 
     name: 'Overview', 
-    href: '/dashboard', 
+    href: '/admin', 
     icon:  <FontAwesomeIcon icon={faHomeAlt}/>, current: true 
   },
   { 
@@ -47,11 +47,6 @@ const navigation = [
 ]
 
 const userNavigation = [
-  { 
-    name: 'Profile', 
-    icon:  <FontAwesomeIcon icon={faUserAlt}/>,
-    href: '/admin/profile' 
-  }
 ]
 
 export default function Admin({ children }) {

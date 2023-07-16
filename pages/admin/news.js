@@ -7,6 +7,8 @@ import { useUser } from '../../lib/user'
 import { useMutation, useQuery } from 'react-query'
 import { api } from '../../lib/axios'
 import { handleUpload } from '../../lib/uploadImg'
+import MyModal from '../../components/Modal/Modal'
+import { NewsButton, NewsForm } from '../dashboard/news'
 
 const Index = () => {
   const { token } = useUser();
@@ -71,12 +73,28 @@ const Index = () => {
 
   return (
     <Admin>
+            <MyModal
+              isOpen={isOpen}
+              title={"Post News"}
+              body={<NewsForm 
+                handleChange={handleChange} 
+                formValues={formValues}
+                handleImageChange={handleImageChange}
+                isSuccess={isSuccess}
+              />}
+              button={<NewsButton 
+                handleSubmit={handleSubmit}
+                isLoading={isLoading}
+              />}
+              closeModal={closeModal}
+      />
         <main className='p-5 sm:p-10 space-y-8'>
             
             <DashboardTitle
             title={"News and Updates"}
             subtitle={"Activities and News relating to the association."}
-            value={"Upload News"}/>
+            value={"Upload News"}
+            onClick={closeModal}/>
 
             <section className='grid sm:grid-cols-3 gap-6 py-4'>
               {

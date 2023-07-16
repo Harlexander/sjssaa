@@ -46,7 +46,7 @@ const Index = () => {
           <DashboardCard
             title={"Total Payments"}
             icon={<BanknotesIcon className='h-5 sm:h-6 text-white'/>}
-            value={4}
+            value={data.totalTrans || 0}
             />
         </section>
 
@@ -55,7 +55,7 @@ const Index = () => {
              <JobsTable data={data.jobs} isLoading={isLoading}/>
           </div>
           <div className='col-1'>
-            <PaymentCard/>
+            <PaymentCard data={data.trans || []} loading={isLoading}/>
           </div>
         </section>
       </main>

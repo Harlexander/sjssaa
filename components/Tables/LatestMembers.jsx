@@ -1,8 +1,9 @@
+import moment from 'moment'
 import React from 'react'
 
-const LatestMembers = () => {
+const LatestMembers = ({data}) => {
   return (
-    <div className='bg-white shadow-xl p-4 space-y-5 rounded-lg'>
+    <div className='bg-white md:min-h-[70vh] shadow-xl p-4 space-y-5 rounded-lg'>
         <p className='font-manrope'>New Members</p>
 
         <div className='relative overflow-x-auto'>
@@ -16,60 +17,16 @@ const LatestMembers = () => {
                     </tr>
                 </thead>
                 <tbody className='divide-y font-figtree text-sm'>
-                    <tr className=''>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Dunkwu Alexander</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>2021</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Lagos</td>
-                        <td className='py-3 pr-4 whitespace-nowrap text-xs text-gray-600'>26th May, 2023</td>
-                    </tr>
-                    <tr className=''>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Dunkwu Alexander</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>2021</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Lagos</td>
-                        <td className='py-3 pr-4 whitespace-nowrap text-xs text-gray-600'>26th May, 2023</td>
-                    </tr>
-                    <tr className=''>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Dunkwu Alexander</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>2021</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Lagos</td>
-                        <td className='py-3 pr-4 whitespace-nowrap text-xs text-gray-600'>26th May, 2023</td>
-                    </tr>
-                    <tr className=''>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Dunkwu Alexander</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>2021</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Lagos</td>
-                        <td className='py-3 pr-4 whitespace-nowrap text-xs text-gray-600'>26th May, 2023</td>
-                    </tr>
-                    <tr className=''>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Dunkwu Alexander</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>2021</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Lagos</td>
-                        <td className='py-3 pr-4 whitespace-nowrap text-xs text-gray-600'>26th May, 2023</td>
-                    </tr>
-                    <tr className=''>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Dunkwu Alexander</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>2021</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Lagos</td>
-                        <td className='py-3 pr-4 whitespace-nowrap text-xs text-gray-600'>26th May, 2023</td>
-                    </tr>
-                    <tr className=''>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Dunkwu Alexander</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>2021</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Lagos</td>
-                        <td className='py-3 pr-4 whitespace-nowrap text-xs text-gray-600'>26th May, 2023</td>
-                    </tr>
-                    <tr className=''>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Dunkwu Alexander</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>2021</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Lagos</td>
-                        <td className='py-3 pr-4 whitespace-nowrap text-xs text-gray-600'>26th May, 2023</td>
-                    </tr>
-                    <tr className=''>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Dunkwu Alexander</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>2021</td>
-                        <td className='py-3 pr-4 whitespace-nowrap'>Lagos</td>
-                        <td className='py-3 pr-4 whitespace-nowrap text-xs text-gray-600'>26th May, 2023</td>
-                    </tr>
+                    {
+                        data.map(({firstName, lastName, set, created_at, city}, index) => (
+                            <tr className=''>
+                                <td className='py-3 pr-4 whitespace-nowrap'>{firstName} {lastName}</td>
+                                <td className='py-3 pr-4 whitespace-nowrap'>{set}</td>
+                                <td className='py-3 pr-4 whitespace-nowrap'>{city}</td>
+                                <td className='py-3 pr-4 whitespace-nowrap text-xs text-gray-600'>{moment(created_at).format("Do MMM, YYYY")}</td>
+                            </tr>
+                        ))
+                    }
                 </tbody>
             </table>
         </div>

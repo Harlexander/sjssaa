@@ -148,6 +148,7 @@ const Form = ({handleChange, formValues, handleImageChange, isSuccess}) => {
           className='border-b-2 font-figtree focus:ring-0 focus:border-b-2 focus:border-pry border-pry border-0 w-full'
           placeholder='Event Type'
         >
+            <option>Type</option>
             <option value={'free'}>Free</option>
             <option value={'paid'}>Paid</option>
         </select>

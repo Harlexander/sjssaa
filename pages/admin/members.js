@@ -10,7 +10,7 @@ import { api } from '../../lib/axios'
 import { useUser } from '../../lib/user'
 import { filterBySet, searchByName } from '../../lib/searchFunction'
 
-const Index = () => {2
+const Index = () => {
     const { token } = useUser();
     const [ current, setCurrent ] = useState(1);
     const [ searchResult, setSearchResult ] = useState([]);
@@ -22,7 +22,7 @@ const Index = () => {2
     }, {enabled : (token !== null)});
 
     useEffect(() => {
-        current > 1 && refetch();
+        (token !== null) && refetch();
     }, 
     [current]);
 
@@ -78,7 +78,7 @@ const Index = () => {2
                 searchResult.length > 0 && (
                     <div className='mb-5 space-y-1'>
                         <p className='font-figtree font-semibold'>Search Result</p>
-                        <MembersTable data={searchResult || []} isLoading={isLoading}/>
+                        <MembersTable data={searchResult || []} isLoading={isLoading} admin={true}/>
                     </div>
                 )
             }

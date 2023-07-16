@@ -4,8 +4,22 @@ import DashboardCard from '../../components/Cards/DashboardCard';
 import PaymentCard from '../../components/Cards/PaymentCard';
 import LatestMembers from '../../components/Tables/LatestMembers';
 import DashboardTitle from '../../components/Header/DashboardTitle';
-import {UserGroupIcon} from '@heroicons/react/24/outline'
+import { UserGroupIcon } from '@heroicons/react/24/outline'
+import { useUser } from '../../lib/user';
+import { useQuery } from 'react-query';
+import { api } from '../../lib/axios';
+
 const Index = () => {
+  const { token } = useUser();
+
+  const { isLoading, data = {}, isSuccess } = useQuery(["statistics"], async () => {
+    const { data } = await api.get("/admin/stats", { headers : { Authorization : `Bearer ${token} ` } });
+
+    return data;
+  }, {enabled : (token !== null)});
+
+  console.log(data);
+
   return (
     <Admin>
       <main className='p-5 sm:p-10'>
@@ -19,27 +33,27 @@ const Index = () => {
           <DashboardCard
             title={"Total Members"}
             icon={<UserGroupIcon className='h-5 sm:h-6 text-white'/>}
-            value={10}/>
+            value={data.memberCount}/>
           <DashboardCard
             title={"Total Payments"}
             icon={<UserGroupIcon className='h-5 sm:h-6 text-white'/>}
-            value={10}/>
+            value={data.totalTrans}/>
           <DashboardCard
             title={"Total Events"}
             icon={<UserGroupIcon className='h-5 sm:h-6 text-white'/>}
-            value={10}/>
+            value={data.events}/>
           <DashboardCard
             title={"Total News"}
             icon={<UserGroupIcon className='h-5 sm:h-6 text-white'/>}
-            value={10}/>
+            value={data.newsCount}/>
         </section>
 
-        <section className='md:grid space-y-4 sm:space-y-0 md:grid-cols-3 gap-5'>
+        <section className='md:grid space-y-4 md:space-y-0 md:grid-cols-3 gap-5'>
           <div className='col-span-2'>
-             <LatestMembers/>
+             <LatestMembers data={data.members || []}/>
           </div>
           <div className='col-1'>
-            <PaymentCard/>
+            <PaymentCard data={data.trans || []}/>
           </div>
         </section>
       </main>

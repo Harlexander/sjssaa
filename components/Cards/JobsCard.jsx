@@ -56,7 +56,7 @@ const JobsCard = ({admin, title, org, exp_date, created_at, description, contact
 
           {
             admin && (
-              <a href={link} className='font-figtree text-xs flex items-center justify-center gap-3text-center bg-red-500 text-white w-full py-1 rounded-lg'>Delete</a>
+              <a className='font-figtree text-xs flex items-center justify-center gap-3text-center bg-red-500 text-white w-full py-1 rounded-lg'>Delete</a>
             )
           }
         </div>   

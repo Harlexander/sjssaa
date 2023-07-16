@@ -62,12 +62,12 @@ const Index = () => {
         <MyModal
             isOpen={isOpen}
             title={"Add Job Opening"}
-            body={<Form 
+            body={<JobForm 
                 handleChange={(e) =>  handleChange(e, setFormValues)} 
                 formValues={formValues}
                 isSuccess={isSuccess}
             />}
-            button={<Button 
+            button={<JobButton 
                 handleSubmit={handleSubmit}
                 isLoading={isLoading}
             />}
@@ -134,6 +134,19 @@ const Index = () => {
               )
             }
             {
+              jobs.isSuccess && 
+                jobs.data.length < 1 && (
+                  <div className='bg-white h-[80vh] w-full col-span-3 flex items-center justify-center rounded-xl'>
+                    <div className='space-y-2'>
+                      <p className='font-figtree text-center text-2xl font-bold'>No Open Jobs</p>
+                      <p className='font-figtree mx-auto text-center text-sm sm:w-2/3'>Post job offers and opportunities for members of the association on any field or profession.</p>
+                    
+                      <button onClick={closeModal} className='flex mx-auto items-center whitespace-nowrap text-sm sm:text-md gap-1.5 sm:gap-3 font-manrope bg-yellow-400 px-4 sm:px-12 py-2 sm:py-2 rounded shadow-xl text-white'>Post Job</button>
+                    </div>
+                  </div>
+                )
+            }
+            {
               jobs.isLoading && (
                 Array(3).fill("").map((indexes, index) => (
                   <div key={index} className='bg-white shadow-lg p-4 rounded-lg'>
@@ -152,7 +165,7 @@ const Index = () => {
 }
 
 
-const Button = ({handleSubmit, isLoading}) => (
+export const JobButton = ({handleSubmit, isLoading}) => (
   <button
   onClick={handleSubmit}
   type="button"
@@ -165,7 +178,7 @@ const Button = ({handleSubmit, isLoading}) => (
 )
 
 
-const Form = ({handleChange, formValues, handleImageChange, isSuccess}) => {
+export const JobForm = ({handleChange, formValues, handleImageChange, isSuccess}) => {
   return(
     <div className='space-y-5 py-5 font-figtree'>
       {

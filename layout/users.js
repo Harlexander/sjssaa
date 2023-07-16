@@ -64,7 +64,7 @@ function MyModal() {
 
   const { query : { reference } } = useRouter();
 
-  const initiate = useMutation(async (data) => await initiatePayment(data, token), { onSuccess : ({authorization_url}) => window.location.href = authorization_url});
+  const initiate = useMutation(async (data) => await initiatePayment(data, token), { onSuccess : ({authorization_url}) => window.location.href = authorization_url });
 
   const verify = useQuery(['verify_due'], async () => await verifyPayment(token, reference), { enabled : ( token !== null && reference !== undefined )});
  
@@ -73,7 +73,8 @@ function MyModal() {
   const body = {
     amount : 16000,
     purpose : "due",
-    callback_url : "http://localhost:3000/dashboard/members"
+    callback_url : "http://localhost:3000/dashboard/members",
+    payment_id : "sjssaa"
   }
   
   const status = useQuery(['due_status'], async () => {

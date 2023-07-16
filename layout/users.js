@@ -61,6 +61,8 @@ const userNavigation = [
 
 function MyModal() {
   const { token } = useUser();
+  const router = useRouter();
+  const fullURL = router.asPath;
 
   const { query : { reference } } = useRouter();
 
@@ -73,7 +75,7 @@ function MyModal() {
   const body = {
     amount : 16000,
     purpose : "due",
-    callback_url : window.location.href,
+    callback_url : fullURL,
     payment_id : "sjssaa"
   }
   

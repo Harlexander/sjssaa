@@ -9,9 +9,7 @@ import { useRouter } from 'next/router';
 const ActivePaymentCard = ({data, loading}) => {
   const { token } = useUser();
 
-  const router = useRouter();
-  const fullURL = router.asPath;
-
+  const url = typeof window !== 'undefined' && window.location.href;
 
   const initiate = useMutation(async (data) => await initiatePayment(data, token), { onSuccess : ({authorization_url}) => window.location.href = authorization_url});
  
@@ -41,7 +39,7 @@ const ActivePaymentCard = ({data, loading}) => {
                         amount : amount, 
                         purpose : title, 
                         callback_url : fullURL,
-                        payment_id : payment_id
+                        payment_id : url
                       })} className='bg-blue-500 p-2 text-xs rounded text-white'>Pay Now</button>
                     </td>
                   </tr>  

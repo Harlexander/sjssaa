@@ -61,8 +61,7 @@ const userNavigation = [
 
 function MyModal() {
   const { token } = useUser();
-  const router = useRouter();
-  const fullURL = router.asPath;
+  const url = typeof window !== 'undefined' && window.location.href;
 
   const { query : { reference } } = useRouter();
 
@@ -75,9 +74,11 @@ function MyModal() {
   const body = {
     amount : 16000,
     purpose : "due",
-    callback_url : fullURL,
+    callback_url : url,
     payment_id : "sjssaa"
   }
+
+  console.log(url);
   
   const status = useQuery(['due_status'], async () => {
     const {data} = await api.get("/due-status" , { headers : { Authorization : `Bearer ${token}`} } )

@@ -4,9 +4,14 @@ import Skeleton from 'react-loading-skeleton';
 import { useMutation, useQuery } from 'react-query';
 import { initiatePayment } from '../../lib/payment';
 import { useUser } from '../../lib/user';
+import { useRouter } from 'next/router';
 
 const ActivePaymentCard = ({data, loading}) => {
   const { token } = useUser();
+
+  const router = useRouter();
+  const fullURL = router.asPath;
+
 
   const initiate = useMutation(async (data) => await initiatePayment(data, token), { onSuccess : ({authorization_url}) => window.location.href = authorization_url});
  
@@ -35,7 +40,7 @@ const ActivePaymentCard = ({data, loading}) => {
                       <button disabled={loading} onClick={() => initiate.mutate({ 
                         amount : amount, 
                         purpose : title, 
-                        callback_url : 'http://localhost:3000/dashboard/dues',
+                        callback_url : fullURL,
                         payment_id : payment_id
                       })} className='bg-blue-500 p-2 text-xs rounded text-white'>Pay Now</button>
                     </td>

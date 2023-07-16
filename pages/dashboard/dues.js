@@ -6,12 +6,9 @@ import DashboardTitle from '../../components/Header/DashboardTitle';
 import { useUser } from '../../lib/user';
 import { useQuery } from 'react-query';
 import { api } from '../../lib/axios';
-import { useRouter } from 'next/router';
 
 const Index = () => {
   const { token } = useUser();
-  const router = useRouter();
-  const fullURL = router.asPath;
 
   const transactions = useQuery(['transactions'], async () => {
     const { data } = await api.get("/transactions" , { headers : { Authorization : `Bearer ${token}`}})
@@ -35,7 +32,7 @@ const Index = () => {
             subtitle={"Manage your subscription,dues and payments. Initiate payments conveniently."}/>
 
           <section>
-            <ActivePaymentCard data={{...activePayments.data, callback_url : fullURL} || [] } loading={activePayments.isLoading}/>
+            <ActivePaymentCard data={activePayments.data || [] } loading={activePayments.isLoading}/>
           </section>
 
           <section>

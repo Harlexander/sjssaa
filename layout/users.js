@@ -73,7 +73,7 @@ function MyModal() {
   const body = {
     amount : 16000,
     purpose : "due",
-    callback_url : "http://localhost:3000/dashboard/members",
+    callback_url : window.location.href,
     payment_id : "sjssaa"
   }
   

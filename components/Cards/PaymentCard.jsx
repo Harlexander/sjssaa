@@ -12,6 +12,7 @@ const PaymentCard = ({data, loading}) => {
                 data.map(({purpose, updated_at, amount, status}, index) => (
                     <Transaction
                     title={purpose}
+                    key={index}
                     status={status}
                     date={moment(updated_at).format("Do MMM, YYYY")}
                     amount={`N${amount}`}/>
@@ -20,7 +21,7 @@ const PaymentCard = ({data, loading}) => {
             {
                 loading && (
                     Array(5).fill("").map((item, index) => (
-                        <Transaction/>
+                        <Transaction key={index}/>
                     ))
                 )
             }

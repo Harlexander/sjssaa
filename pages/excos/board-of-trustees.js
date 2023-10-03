@@ -10,13 +10,13 @@ const Index = () => {
       img : "../bot3.jpeg",
       name : "Dr. Akinyele Akinlade",
       position : "Chairman",
-      mail : "chairman.bot.sjssaa.com"
+      mail : "akin.akinlade@sjssaa.com"
     },
     {
       img : "../bot4.jpeg",
       name : "Mr. Tony Agbuagba",
       position : "secretary",
-      mail : "secretary.bot@sjssaa.com"
+      mail : "tony.agbuagba@sjssaa.com"
     },
     {
       img : "../bot5.jpeg",

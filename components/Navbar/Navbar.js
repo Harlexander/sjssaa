@@ -25,6 +25,10 @@ const IndexNavbar = () => {
             }]
         },
         {
+            title : "ELECTION CANDIDATES",
+            link  : "/election"
+        },
+        {
             title : "GALLERY",
             link  : "/gallery"
         },
@@ -60,10 +64,6 @@ const IndexNavbar = () => {
                 link : "/excos/web-master"
             },
         ]
-        },
-        {
-            title : "MEMBERS",
-            link  : "/members"
         },
         {
             title : "CONTACT",

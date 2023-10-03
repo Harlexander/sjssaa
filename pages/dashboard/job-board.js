@@ -24,19 +24,12 @@ const Index = () => {
   const [formValues, setFormValues] = useState({
     title: '',
   });
-  
-  const jobs = useQuery(["job-board"], async () => {
-      const { data } = await api.get("/job-board", { headers : { Authorization : `Bearer ${token} ` } });
-
-      return data;
-  }, {enabled : (token !== null)});
 
   const { isLoading, mutate, isSuccess } = useMutation(async (values) => {
       const { data } = await api.post("/job-board", values, { headers : { Authorization : `Bearer ${token}`}})
       return data;
     }, {
       onSuccess : () => {
-        setFormValues({});
         jobs.refetch();
       }
     });

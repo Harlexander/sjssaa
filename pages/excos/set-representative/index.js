@@ -264,7 +264,7 @@ const Index = () => {
               {set}
             </p>
             <Link href={`/excos/set-representative/${set}`}>
-             <button type="button" class=" inline-block px-6 py-2.5 bg-pry text-white font-nunito transition duration-150 ease-in-out">View Representative</button>            
+             <button type="button" class=" inline-block px-6 py-2.5 bg-[#800000] text-white font-nunito transition duration-150 ease-in-out">View Representative</button>            
             </Link>
           </div>
             ))

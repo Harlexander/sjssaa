@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
 import { ArrowRightCircleIcon, CheckBadgeIcon, CreditCardIcon, CurrencyDollarIcon, DocumentDuplicateIcon, ExclamationCircleIcon, HomeIcon, UserCircleIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays, faCashRegister, faChartArea, faCube, faEnvelope, faHeadphones, faHeart, faHomeAlt, faMoneyCheckDollar, faNewspaper, faSpinner, faStar, faUpload, faUser, faUserAlt, faUserCheck, faUserDoctor, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays, faCashRegister, faChartArea, faCube, faEnvelope, faHeadphones, faHeart, faHome, faHomeAlt, faMoneyCheckDollar, faNewspaper, faSpinner, faStar, faUpload, faUser, faUserAlt, faUserCheck, faUserDoctor, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { UserProvider, useUser } from "../lib/user";
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
@@ -30,9 +30,14 @@ const navigation = [
     icon:  <FontAwesomeIcon icon={faUserGroup}/>, current: true 
   },
   { 
-    name: 'Subscriptions', 
+    name: 'Payments', 
     href: '/dashboard/dues', 
     icon:  <FontAwesomeIcon icon={faMoneyCheckDollar}/>, current: true 
+  },
+  { 
+    name: 'Election', 
+    href: '/dashboard/election', 
+    icon:  <FontAwesomeIcon icon={faUserCheck}/>, current: true 
   },
   { 
     name: 'Events', 
@@ -56,7 +61,12 @@ const userNavigation = [
     name: 'Profile', 
     icon:  <FontAwesomeIcon icon={faUserAlt}/>,
     href: '/dashboard/profile' 
-  }
+  },
+  { 
+    name: 'Back Home', 
+    icon:  <FontAwesomeIcon icon={faHome}/>,
+    href: '/' 
+  },
 ]
 
 function MyModal() {
@@ -72,13 +82,11 @@ function MyModal() {
   let [isOpen, setIsOpen] = useState(false);
 
   const body = {
-    amount : 16000,
-    purpose : "due",
+    amount : 1500,
+    purpose : "registration fee",
     callback_url : url,
     payment_id : "sjssaa"
   }
-
-  console.log(url);
   
   const status = useQuery(['due_status'], async () => {
     const {data} = await api.get("/due-status" , { headers : { Authorization : `Bearer ${token}`} } )
@@ -89,9 +97,6 @@ function MyModal() {
   function closeModal() {
     setIsOpen(true)
   }
-
-
-  console.log(status, verify, initiate);
 
   return (
     <>
@@ -126,7 +131,7 @@ function MyModal() {
                     className="text-lg font-medium leading-6 text-gray-900 font-figtree"
                   >
                     {
-                      verify.isIdle && 'Annual Due Payment'
+                      verify.isIdle && 'Registration Fee'
                     }
                     { verify.isSuccess && "Payment Sucessful!"}
                     { verify.isLoading && "Please Wait!"}
@@ -135,7 +140,7 @@ function MyModal() {
                     {
                       verify.isIdle && (
                           <p className="text-sm font-figtree text-gray-500">
-                            Your annual due of N16,000.00 is neccessary for continuation of usage of this platform. 
+                            Registration fee of N1,500.00 is neccessary for continuation of usage of this platform. 
 
                             Click the button and you will be redirected to a secured payment page.
                           </p>                        

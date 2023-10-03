@@ -9,12 +9,19 @@ import { QueryClient, useMutation } from 'react-query';
 import { imgHost } from '../../lib/imgHost';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import MyModal from '../../components/Modal/Modal';
+import BadgeSuccess from '../../components/Badge/BadgeSuccess';
+import { handleChange } from '../../lib/handleInput';
+import { ScaleLoader } from 'react-spinners';
+import { countries } from '../../lib/countries';
 
 const Index = () => {
-  const { user, token } = useUser();
+  const { user, token, refetch } = useUser();
   const [ppUload, setPpUload] = useState(false);
+  const [ isOpen, setIsOpen ] = useState(false);
 
-  async function handleImageChange(event)  {
+
+  async function imageChange(event)  {
     const file = event.target.files[0];
 
     mutate(file);
@@ -38,18 +45,53 @@ const Index = () => {
     return data;
    }, {
     onSuccess : () => {
-      window.location.reload();
+      refetch();
     }
    });
 
+   const closeModal = () => setIsOpen(!isOpen);
+
+   const [formValues, setFormValues] = useState({
+    
+   });
+   
+   const editProfile = useMutation(async (values) => {
+       const { data } = await api.put("/user/update", values, { headers : { Authorization : `Bearer ${token}`}})
+       return data;
+     }, {
+       onSuccess : () => {
+        refetch();
+        }
+     });
+ 
+     const handleSubmit = () => {
+       editProfile.mutate(formValues);
+     }
+
   return (
     <User>
+          <MyModal
+            isOpen={isOpen}
+            title={"Edit Your Profile"}
+            body={<EditForm 
+                handleChange={(e) =>  handleChange(e, setFormValues)} 
+                user={user}
+                formValues={formValues}
+                isSuccess={editProfile.isSuccess}
+            />}
+            button={<EditButton 
+                handleSubmit={handleSubmit}
+                isLoading={editProfile.isLoading}
+            />}
+            closeModal={closeModal}
+            />
         <main className='md:p-10 p-5 space-y-8'>
 
           <DashboardTitle
           title={"My Profile"}
           subtitle={`Hello ${user.lastName},`}
-          value={"Edit Profile"}/>
+          value={"Edit Profile"}
+          onClick={closeModal}/>
 
           <section className='sm:grid sm:grid-cols-3 gap-4 space-y-4 sm:space-y-0 py-5'>
             <div className='col-1 p-4 rounded w-full'>
@@ -60,7 +102,7 @@ const Index = () => {
                 }
               
               <form className='bg-pry shadow rounded-full w-14 h-14 absolute flex items-center justify-center bottom-0 right-0'>
-                <input type="file" accept='.jpg,.png,.jpeg,.svg' onChange={handleImageChange} className='opacity-0 absolute h-full w-full' />
+                <input type="file" accept='.jpg,.png,.jpeg,.svg' onChange={imageChange} className='opacity-0 absolute h-full w-full' />
                 <CameraIcon className='h-7 text-white'/>
               </form>                
 
@@ -158,6 +200,126 @@ const Index = () => {
     </User>
   )
 }
+
+
+export const EditButton = ({handleSubmit, isLoading}) => (
+  <button
+  onClick={handleSubmit}
+  type="button"
+  className="inline-flex text-white font-figtree justify-center rounded-md border border-transparent bg-pry px-4 py-2 text-sm font-medium hover:bg-yellow-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-pry focus-visible:ring-offset-2"
+>
+  {
+    isLoading ? (<ScaleLoader className='px-8' color='white' height={16}/>) : ("Edit Profile")
+  }
+</button>
+)
+
+
+export const EditForm = ({handleChange, formValues, user, isSuccess}) => {
+  return(
+    <div className='space-y-5 py-5 font-figtree'>
+      {
+        isSuccess && (
+          <BadgeSuccess
+          message={"Profile Updated!"}/>
+        )
+      }
+
+    <p className='text-sm'>Edit your personal information here.</p>
+
+    <div className='font-figtree'>
+      <input
+        type="text"
+        name="firstName"
+        required
+        value={formValues.firstName}
+        defaultValue={user.firstName}
+        onChange={handleChange}
+        className='border-b-2 font-figtree focus:ring-0 focus:border-b-2 focus:border-pry border-pry border-0 w-full'
+        placeholder='First Name'
+      />
+    </div>
+    <div className='font-figtree'>
+      <input
+        type="text"
+        name="lastName"
+        required
+        value={formValues.lastName}
+        defaultValue={user.lastName}
+        onChange={handleChange}
+        className='border-b-2 font-figtree focus:ring-0 focus:border-b-2 focus:border-pry border-pry border-0 w-full'
+        placeholder='Last Name'
+      />
+    </div>
+    <div className='font-figtree'>
+      <input
+        type="text"
+        name="mobile"
+        required
+        value={formValues.mobile}
+        defaultValue={user.mobile}
+        onChange={handleChange}
+        className='border-b-2 font-figtree focus:ring-0 focus:border-b-2 focus:border-pry border-pry border-0 w-full'
+        placeholder='Mobile'
+      />
+    </div>
+    <div className='font-figtree'>
+      <input
+        type="text"
+        name="profession"
+        required
+        value={formValues.profession}
+        defaultValue={user.profession}
+        onChange={handleChange}
+        className='border-b-2 font-figtree focus:ring-0 focus:border-b-2 focus:border-pry border-pry border-0 w-full'
+        placeholder='Profession'
+      />
+    </div>
+    <div className='font-figtree'>
+      <input
+        type='text'
+        name="city"
+        required
+        value={formValues.city}
+        defaultValue={user.city}
+        onChange={handleChange}
+        className='border-b-2 font-figtree focus:ring-0 focus:border-b-2 focus:border-pry border-pry border-0 w-full'
+        placeholder='City'
+      />
+    </div>
+    <div className='font-figtree'>
+      <input
+        type='text'
+        name="state"
+        required
+        value={formValues.state}
+        defaultValue={user.state}
+        onChange={handleChange}
+        className='border-b-2 font-figtree focus:ring-0 focus:border-b-2 focus:border-pry border-pry border-0 w-full'
+        placeholder='State'
+      />
+    </div>
+    <div className='font-figtree'>
+      <select
+        type='text'
+        name="country"
+        required
+        value={formValues.country}
+        defaultValue={user.country}
+        onChange={handleChange}
+        className='border-b-2 font-figtree focus:ring-0 focus:border-b-2 focus:border-pry border-pry border-0 w-full'
+        placeholder='Country'
+      >
+        {countries.map((item) => (
+          <option value={item} key={item}>{item}</option>
+        ))}
+      </select>
+    </div>
+
+  </div>
+  )
+}
+
 
 export default Index;
 

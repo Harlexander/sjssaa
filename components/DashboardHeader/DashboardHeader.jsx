@@ -6,6 +6,7 @@ import Link from 'next/link'
 import SideMenu from '../Sidebar/SideNav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignOut } from '@fortawesome/free-solid-svg-icons'
+import { useUser } from '../../lib/user'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -13,6 +14,8 @@ function classNames(...classes) {
 
 const DashboardHeader = ({navigation, userNavigation}) => {
   const [open, setOpen] = useState(false);
+
+  const { signOut } = useUser();
 
   const current_user = {
     name: "user",
@@ -139,7 +142,7 @@ const DashboardHeader = ({navigation, userNavigation}) => {
               ))}
               <Disclosure.Button
                   as="button"
-                  onClick={() => auth.signOut()}
+                  onClick={signOut}
                   className="block rounded-md px-3 py-2 text-base font-medium text-gray-100 hover:bg-gray-700 hover:text-white"
                 >
                   Sign Out
@@ -218,7 +221,7 @@ const DashboardHeader = ({navigation, userNavigation}) => {
                         ))
                     }
                     <li className="relative">
-                        <a onClick={() => console.log("sign out")} className="flex items-center gap-5 text-sm py-4 px-6 h-12 overflow-hidden text-gray-100 text-ellipsis whitespace-nowrap rounded hover:text-yellow-600 hover:bg-yellow-50 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="primary">
+                        <a onClick={signOut} className="flex items-center gap-5 text-sm py-4 px-6 h-12 overflow-hidden text-gray-100 text-ellipsis whitespace-nowrap rounded hover:text-yellow-600 hover:bg-yellow-50 transition duration-300 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="primary">
                         <FontAwesomeIcon icon={faSignOut}/>
                             <span>Sign Out</span>
                         </a>

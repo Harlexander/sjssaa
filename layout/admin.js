@@ -30,6 +30,11 @@ const navigation = [
     icon:  <FontAwesomeIcon icon={faMoneyCheckDollar}/>, current: true 
   },
   { 
+    name: 'Election', 
+    href: '/admin/election', 
+    icon:  <FontAwesomeIcon icon={faUserGroup}/>, current: true 
+  },
+  { 
     name: 'Events', 
     href: '/admin/events', 
     icon:  <FontAwesomeIcon icon={faCalendarDays}/>, current: true 

@@ -3,6 +3,7 @@ import React from 'react'
 import Skeleton from 'react-loading-skeleton'
 
 const PaymentCard = ({data, loading}) => {
+    console.log(data)
   return (
     <div className='h-full shadow-lg  w-full shadow-xl bg-white space-y-8 rounded-lg p-4'>
         <p className='font-manrope'>Latest Transactions</p>
@@ -33,7 +34,7 @@ const PaymentCard = ({data, loading}) => {
 const Transaction = ({title, date, amount, status}) => (
     <div className='flex justify-between'>
         <div className='flex gap-3'>
-            <div className={`p-5 rounded bg-${status === "success" ? "green" : "yellow"}-200`}></div>
+            <div className={`p-5 rounded ${status === "success" ? "bg-green-200" : "bg-yellow-200"}`}></div>
 
             <div className='space-y-1'>
                 <p className='capitalize flex-1 font-manrope text-sm'>{title || <Skeleton/>}</p>

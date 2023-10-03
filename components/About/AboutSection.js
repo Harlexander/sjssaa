@@ -18,14 +18,10 @@ const AboutSection = () => {
 
         <div className='flex justify-center gap-1 md:gap-5'>
         <Link download="SJSSAA Constitution" href={"./constitution.pdf" }>
-            <button className={`bg-pry font-primary text-black md:text-2xl px-8 py-1 text-white`}>
-              Constitution
-            </button>
+          <SolidButton title={"Constitution"}  additionalClass={` font-primary md:text-2xl px-8 py-1`}/>
         </Link>
         <Link download="strategic-plan" href={"./strategic-plan.pdf" }>
-            <button className={`bg-pry font-primary text-black md:text-2xl px-8 py-1 text-white`}>
-              Strategic Plan
-            </button>
+            <SolidButton title={"Strategic Plan"}  additionalClass={` font-primary md:text-2xl px-8 py-1`}/>
         </Link>
         </div>        
       </Slide>

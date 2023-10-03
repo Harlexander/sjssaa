@@ -18,28 +18,22 @@ const Index = () => {
               <p className='font-nunito font-bold'>Reach out to anyone on the SJSSAA contact email with your questions. We are here to help.</p>
 
               <p className='py-4'>If you have any queries or questions about St. Joseph Secondary School Alumni Association, please email us or call the secretary at +234 810 3562 7282. We would get back to you as soon as possible. Issues are only addressed to on weekdays only.</p>
-
-             <div>
-              <p className='text-lg font-bold'>Adeshina Adegboyega</p>
-              <p>President</p>
-              <a href='mailto:president@sjssaa.com' className='text-blue-700 underline'>president@sjssaa.com</a>
-             </div>
              
              <div>
               <p className='text-lg font-bold'>Israel Alika-John</p>
               <p> General Secretary</p>
-              <a href='mailto:generalsecretary@sjssaa.com' className='text-blue-700 underline'>generalsecretary@sjssaa.com</a>
+              {/* <a href='mailto:israelolusegun.alika@sjssaa.com	' className='text-blue-700 underline'>israelolusegun.alika@sjssaa.com	</a> */}
              </div>
             
              <div>
               <p className='text-lg font-bold'>Henry Nkatta</p>
               <p>Public Relations Officer</p>
-              <a href='mailto:pro@sjssaa.com' className='text-blue-700 underline'>pro@sjssaa.com</a>
+              {/* <a href='mailto:nwankantta@sjssaa.com	' className='text-blue-700 underline'>nwankantta@sjssaa.com	</a> */}
              </div>
              <div>
               <p className='text-lg font-bold'>Prof. Godwin-Charles Ogbeide</p>
               <p>Director of Membership</p>
-              <a href='mailto:dom@sjssaa.com' className='text-blue-700 underline'>dom@sjssaa.com</a>
+              {/* <a href='mailto:dom@sjssaa.com' className='text-blue-700 underline'>dom@sjssaa.com</a> */}
              </div>
             </div>
             <div className='col-1'>

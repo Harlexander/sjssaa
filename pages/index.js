@@ -8,6 +8,7 @@ import GallerySection from '../components/Gallery/GallerySection'
 import HeroSection from '../components/HeroSection/HeroSection'
 import IndexNavbar from '../components/Navbar/Navbar'
 import ResponsilbiltySection from '../components/Responsibility/ResponsilbiltySection'
+import ElectionSection from '../components/Election/ElectionSection'
 
 export default function Index() {
   return (
@@ -15,6 +16,7 @@ export default function Index() {
       <IndexNavbar/>
       <HeroSection/>
       <AboutSection/>
+      <ElectionSection/>
       <GallerySection/>
       <ResponsilbiltySection/>
       <EventSection/>

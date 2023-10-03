@@ -5,8 +5,10 @@ import { useMutation, useQuery } from 'react-query';
 import { initiatePayment } from '../../lib/payment';
 import { useUser } from '../../lib/user';
 import { useRouter } from 'next/router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-const ActivePaymentCard = ({data, loading}) => {
+const ActivePaymentCard = ({data, loading, admin}) => {
   const { token } = useUser();
 
   const url = typeof window !== 'undefined' && window.location.href;
@@ -28,20 +30,27 @@ const ActivePaymentCard = ({data, loading}) => {
                 <td className='py-2 px-3 whitespace-nowrap'></td>
               </tr>
               {
-                data.map(({title, description, amount, close_date, payment_id}) => (
+                data.map(({title, description, amount, close_date, payment_id, set}) => (
                   <tr className='font-figtree text-sm' key={payment_id}>
                     <td className='py-2 px-3 whitespace-nowrap'>{title}</td>
                     <td className='py-2 px-3 '>{description}</td>
                     <td className='py-2 px-3 whitespace-nowrap'>N{amount}</td>
                     <td className='py-2 px-3 whitespace-nowrap'>{moment(close_date).format("Do MMM")}</td>
                     <td className='py-2 px-3 whitespace-nowrap'>
-                      <button disabled={loading} onClick={() => initiate.mutate({ 
-                        amount : amount, 
-                        purpose : title, 
-                        callback_url : fullURL,
-                        payment_id : url
-                      })} className='bg-blue-500 p-2 text-xs rounded text-white'>Pay Now</button>
-                    </td>
+                      {
+                        !admin && (
+                        <button disabled={loading} onClick={() => initiate.mutate({ 
+                            amount : amount, 
+                            purpose : title, 
+                            callback_url : url,
+                            payment_id : payment_id
+                          })} className='bg-blue-500 p-2 text-xs rounded text-white'>{initiate.isLoading ? (<FontAwesomeIcon icon={faSpinner} spin/>) : ("Pay Now")}</button>
+                        )
+                      }
+                      {
+                        admin && <>{set}</>
+                      }
+                       </td>
                   </tr>  
                 ))
               }      
@@ -54,7 +63,9 @@ const ActivePaymentCard = ({data, loading}) => {
                       <td className='py-2 px-3 whitespace-nowrap'><Skeleton/></td>
                       <td className='py-2 px-3 whitespace-nowrap'><Skeleton/></td>
                       <td className='py-2 px-3 whitespace-nowrap'>
-                        <button className='bg-blue-500 p-2 text-xs rounded text-white'>Pay Now</button>
+                        {
+                          !admin && <button className='bg-blue-500 p-2 text-xs rounded text-white'>Pay Now</button>
+                        }
                       </td>
                     </tr>  
                   ))

@@ -60,7 +60,6 @@ const Index = () => {
     return data;
   }, {
     onSuccess : () => {
-      setFormValues({});
       news.refetch();
     }
   });

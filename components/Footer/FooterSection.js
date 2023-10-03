@@ -23,10 +23,9 @@ const FooterSection = () => {
                     <p className='font-montserrat font-bold text-black pb-5 text-xl'>Contact Us</p>
                     <ul className='text-gray-900 font-montserrat text-sm space-y-2'>
                         <li><a href='tel:+2348142676712' className='hover:text-yellow-900 hover:font-bold'>+2348142676712 (P.R.O)</a></li>
-                        <li><a href='mailto:pro@sjssaa.com' className='hover:text-yellow-900 hover:font-bold'>pro@sjssaa.com</a></li>
+                        <li><a href='mailto:israelolusegun.alika@sjssaa.com' className='hover:text-yellow-900 hover:font-bold'>israelolusegun.alika@sjssaa.com</a></li>
                         <li><a href='mailto:dom@sjssaa.com' className='hover:text-yellow-900 hover:font-bold'>dom@sjsss.com</a></li>
-                        <li><a href='mailto:secretary@sjssaa.com' className='hover:text-yellow-900 hover:font-bold'>secretary@sjsss.com</a></li>
-                        <li><a href='mailto:president@sjssaa.com' className='hover:text-yellow-900 hover:font-bold'>president@sjsss.com</a></li>
+                        <li><a href='mailto:nwankantta@sjssaa.com' className='hover:text-yellow-900 hover:font-bold'>nwankantta@sjssaa.com</a></li>
                     </ul>
                 </div>
                 <div className='col-1'>

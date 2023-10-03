@@ -31,25 +31,25 @@ const EventCarousel = () => {
 
                 <div className="flex justify-between">
                     <div>
-                        <div className='bg-yellow-300 p-3 shadow-sm'>
+                        <div className='bg-[#800000] text-white p-3 shadow-sm'>
                             <p className='font-primary text-2xl md:text-3xl'>{days}</p>
                         </div>
                         <p className='font-primary text-md md:text-xl'>Days</p>
                     </div>
                     <div>
-                        <div className='bg-yellow-300 p-3 shadow-sm'>
+                        <div className='bg-[#800000] text-white p-3 shadow-sm'>
                             <p className='font-primary text-2xl md:text-3xl'>{hours}</p>
                         </div>
                         <p className='font-primary text-md md:text-xl'>Hours</p>
                     </div>
                     <div>
-                        <div className='bg-yellow-300 p-3 shadow-sm'>
+                        <div className='bg-[#800000] text-white p-3 shadow-sm'>
                             <p className='font-primary text-2xl md:text-3xl'>{minutes}</p>
                         </div>
                         <p className='font-primary text-md md:text-xl'>Mins</p>
                     </div>
                     <div>
-                        <div className='bg-yellow-300 p-3 shadow-sm'>
+                        <div className='bg-[#800000] text-white p-3 shadow-sm'>
                             <p className='font-primary text-2xl md:text-3xl'>{seconds}</p>
                         </div>
                         <p className='font-primary text-md md:text-xl'>Secs</p>
@@ -61,7 +61,7 @@ const EventCarousel = () => {
                 <div className='flex gap-3'>
                     <SolidButton
                     title={"Register"}
-                    additionalClass={"font-primary w-full py-2"}
+                    additionalClass={"font-primary w-full py-2 "}
                     />
                     <OutlineButton
                     title={"Join Event"}
@@ -95,25 +95,25 @@ const EventCarousel = () => {
 
                 <div className="flex justify-between">
                     <div>
-                        <div className='bg-yellow-300 p-3 shadow-sm'>
+                        <div className='bg-[#800000] text-white p-3 shadow-sm'>
                             <p className='font-primary text-2xl md:text-3xl'>{days}</p>
                         </div>
                         <p className='font-primary text-md md:text-xl'>Days</p>
                     </div>
                     <div>
-                        <div className='bg-yellow-300 p-3 shadow-sm'>
+                        <div className='bg-[#800000] text-white p-3 shadow-sm'>
                             <p className='font-primary text-2xl md:text-3xl'>{hours}</p>
                         </div>
                         <p className='font-primary text-md md:text-xl'>Hours</p>
                     </div>
                     <div>
-                        <div className='bg-yellow-300 p-3 shadow-sm'>
+                        <div className='bg-[#800000] text-white p-3 shadow-sm'>
                             <p className='font-primary text-2xl md:text-3xl'>{minutes}</p>
                         </div>
                         <p className='font-primary text-md md:text-xl'>Mins</p>
                     </div>
                     <div>
-                        <div className='bg-yellow-300 p-3 shadow-sm'>
+                        <div className='bg-[#800000] text-white p-3 shadow-sm'>
                             <p className='font-primary text-2xl md:text-3xl'>{seconds}</p>
                         </div>
                         <p className='font-primary text-md md:text-xl'>Secs</p>

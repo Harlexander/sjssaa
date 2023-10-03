@@ -16,7 +16,7 @@ const Executive = () => {
             name={'Adeshina Adegboyega'}
             img="../president.png"
             bio={"I am interested in rendering service for our great school first or with the first; I believe my experience coupled with my interpersonal abilities would make me a strong fit for this position."}
-            mail={"President@sjssaa.com"}
+            mail={"gboyega.adeshina@sjssaa.com"}
             position="President"/>
             
             <div className='h-[0.1px] md:h-[0.5px] bg-yellow-900 bg-opacity-20'/>
@@ -25,7 +25,7 @@ const Executive = () => {
             name={'Lanre Are'}
             img="../vp-nigeria.png"
             bio={"A team work aim to design, build and develop the association for the progress, fairness, justice and benefits of all SJSSA members."}
-            mail={"vicepresident.nigeria@sjssaa.com"}
+            mail={"lanreare@sjssaa.com"}
             position="Vice President Nigeria"/>
             
             <div className='h-[0.1px] md:h-[0.5px] bg-yellow-900 bg-opacity-20'/>
@@ -34,7 +34,7 @@ const Executive = () => {
             name={'Jacob Babatunde Ajayi'}
             img="../vp.png"
             bio={"I am an outstanding team player and possess good communication skills. I am hardworking, very well organized, and self-confident."}
-            mail={"vicepresident.europe.asia@sjssaa.com"}
+            mail={"jb.ajayi@sjssaa.com"}
             position="Vice President Europe and Asia"/>
         </div>
 

@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react'
 import Admin from '../../layout/admin'
-import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/24/outline'
+import { CheckIcon, ChevronUpDownIcon, PhotoIcon } from '@heroicons/react/24/outline'
 import DashboardTitle from '../../components/Header/DashboardTitle'
 import { useMutation, useQuery } from 'react-query'
 import { api } from '../../lib/axios'
@@ -9,6 +9,7 @@ import BadgeSuccess from '../../components/Badge/BadgeSuccess';
 import ElectionTable from '../../components/Tables/ElectionTable'
 import { positions } from '../election'
 import { Listbox, Transition } from '@headlessui/react'
+import { ScaleLoader } from 'react-spinners'
 
 const Index = () => {
     const [selected, setSelected] = useState(positions[0])

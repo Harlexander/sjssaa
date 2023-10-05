@@ -64,6 +64,7 @@ const PaymentsTable = ({data, loading}) => {
 }
 
 export const AdminPaymentsTable = ({data, loading}) => {
+    // console.log(data);
     return(
         <div className='bg-white p-4 rounded-lg shadow-xl relative overflow-x-auto'>
         <table className='table-responsive w-full divide-y'>
@@ -82,7 +83,7 @@ export const AdminPaymentsTable = ({data, loading}) => {
                     data.map(({trans_id, purpose, created_at, amount, status, member : { firstName, lastName }}) => (
                         <tr className='' key={trans_id}>
                         <td className='py-5 pr-4 whitespace-nowrap'>{trans_id}</td>
-                        <td className='py-5 pr-4 whitespace-nowrap'>Dunkwu Alexander</td>
+                        <td className='py-5 pr-4 whitespace-nowrap'>{firstName} {lastName}</td>
                         <td className='py-5 pr-4 whitespace-nowrap'>{purpose}</td>
                         <td className='py-5 pr-4 whitespace-nowrap'>{moment(created_at).format("Do MMM, YYYY")}</td>
                         <td className='py-5 pr-4 whitespace-nowrap'>

@@ -23,7 +23,7 @@ const Index = () => {
         search : []
     });
 
-    const { data = {} , isLoading, error, refetch, isSuccess} = useQuery(['transactions'], async () => {
+    const { data = {} , isLoading, error, refetch, isSuccess} = useQuery(['admin-transaction'], async () => {
         const { data } = await api.get(`/transactions/admin` , { headers : { Authorization : `Bearer ${token}`}, params : { page : current, status : filter.status }})
       
         return data;
@@ -65,7 +65,7 @@ const Index = () => {
     };
 
     const activePayments = useQuery(['active-payments'], async () => {
-        const { data } = await api.get("/active-payment" , { headers : { Authorization : `Bearer ${token}`}, params : { admin : true }})
+        const { data } = await api.get("/active-payment" , { headers : { Authorization : `Bearer ${token}`}, params : { admin : "admin" }})
       
         return data;
       }, { enabled : (token !== null) });

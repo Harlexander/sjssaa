@@ -4,6 +4,30 @@ import React from 'react'
 import { SolidButton } from '../Button/Button'
 import ExecutiveContainer from './ExecutiveContainer'
 
+const executiveData = [
+  {
+    name: 'Kolawole Banire',
+    img: '',
+    bio: 'I am interested in rendering service for our great school first or with the first; I believe my experience coupled with my interpersonal abilities would make me a strong fit for this position.',
+    mail: 'kolawole.banire@sjssaa.com',
+    position: 'President',
+  },
+  {
+    name: 'Israel Olusegun Alika',
+    img: '../general secretary.png',
+    bio: 'A team work aim to design, build and develop the association for the progress, fairness, justice and benefits of all SJSSA members.',
+    mail: 'lanreare@sjssaa.com',
+    position: 'Vice President Nigeria',
+  },
+  {
+    name: 'Jacob Babatunde Ajayi',
+    img: '../vp.png',
+    bio: 'I am an outstanding team player and possess good communication skills. I am hardworking, very well organized, and self-confident.',
+    mail: 'jb.ajayi@sjssaa.com',
+    position: 'Vice President Europe and Asia',
+  },
+];
+
 const Executive = () => {
   return (
     <div className="relative bg-yellow-50 px-5 py-20">
@@ -12,30 +36,18 @@ const Executive = () => {
             </div>
 
         <div className='w-full md:px-32 space-y-12'>
-        <ExecutiveContainer
-            name={'Adeshina Adegboyega'}
-            img="../president.png"
-            bio={"I am interested in rendering service for our great school first or with the first; I believe my experience coupled with my interpersonal abilities would make me a strong fit for this position."}
-            mail={"gboyega.adeshina@sjssaa.com"}
-            position="President"/>
-            
-            <div className='h-[0.1px] md:h-[0.5px] bg-yellow-900 bg-opacity-20'/>
+            {
+              executiveData.map((executive, index) => (
+                <>
+                <ExecutiveContainer 
+                    {...executive}
+                    img={executive.img ? executive.img : '/user.webp'}
+                   />
 
-            <ExecutiveContainer
-            name={'Lanre Are'}
-            img="../vp-nigeria.png"
-            bio={"A team work aim to design, build and develop the association for the progress, fairness, justice and benefits of all SJSSA members."}
-            mail={"lanreare@sjssaa.com"}
-            position="Vice President Nigeria"/>
-            
-            <div className='h-[0.1px] md:h-[0.5px] bg-yellow-900 bg-opacity-20'/>
-
-            <ExecutiveContainer
-            name={'Jacob Babatunde Ajayi'}
-            img="../vp.png"
-            bio={"I am an outstanding team player and possess good communication skills. I am hardworking, very well organized, and self-confident."}
-            mail={"jb.ajayi@sjssaa.com"}
-            position="Vice President Europe and Asia"/>
+                  <div className='h-[0.1px] md:h-[0.5px] bg-yellow-900 bg-opacity-20'/>
+                </>
+              ))
+            }            
         </div>
 
         <div className='flex justify-center py-10'>

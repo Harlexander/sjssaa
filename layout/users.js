@@ -34,11 +34,11 @@ const navigation = [
     href: '/dashboard/dues', 
     icon:  <FontAwesomeIcon icon={faMoneyCheckDollar}/>, current: true 
   },
-  { 
-    name: 'Election', 
-    href: '/dashboard/election', 
-    icon:  <FontAwesomeIcon icon={faUserCheck}/>, current: true 
-  },
+  // { 
+  //   name: 'Election', 
+  //   href: '/dashboard/election', 
+  //   icon:  <FontAwesomeIcon icon={faUserCheck}/>, current: true 
+  // },
   { 
     name: 'Events', 
     href: '/dashboard/events', 

@@ -24,10 +24,10 @@ const IndexNavbar = () => {
                 link : "./strategic-plan.pdf"
             }]
         },
-        {
-            title : "ELECTION CANDIDATES",
-            link  : "/election"
-        },
+        // {
+        //     title : "ELECTION CANDIDATES",
+        //     link  : "/election"
+        // },
         {
             title : "GALLERY",
             link  : "/gallery"

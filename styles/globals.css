@@ -17,3 +17,8 @@ html{
         margin-left : 16rem
     }
 }
+
+#heroImage{
+    background: url('../public//sjss1995\ \(3\).jpeg') no-repeat;
+    background-size: cover;
+}

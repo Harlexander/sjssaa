@@ -15,16 +15,19 @@ const Index = () => {
     const [ current, setCurrent ] = useState(1);
     const [ searchResult, setSearchResult ] = useState([]);
 
-    const { data = {}, isLoading } = useQuery(["members"], async () => {
-        const { data } = await api.get("/members", { headers : { Authorization : `Bearer ${token} ` }});
+    const { data = {}, isLoading, refetch } = useQuery(["members"], async () => {
+        const { data } = await api.get(`/members?page=${current}`, { headers : { Authorization : `Bearer ${token} ` }});
   
         return data;
-    }, {enabled : (token !== null)});
+    }, {enabled : false});
 
     useEffect(() => {
-        current > 1 && refetch();
+        if(token){
+            refetch()
+        }
     }, 
-    [current]);
+    [current, token]);
+
 
     const search = (e) => {
         if(e.target.value.length > 0 ){
@@ -52,7 +55,7 @@ const Index = () => {
                     <MagnifyingGlassIcon className='h-4'/>
                     <input onChange={search} className='font-figtree bg-transparent w-full text-sm rounded px-2 py-1' placeholder='Search'/>
                 </div>
-                <div className='bg-gray-200'>
+                <div className='bg-gray-200 hidden'>
                     <select className='font-figtree bg-transparent border-0 w-full text-sm rounded px-2 py-1'>
                         <option>Set</option>
                         {
@@ -80,10 +83,10 @@ const Index = () => {
                 <p className='bg-white px-4 py-2 rounded-lg'>Page {data.current_page} of {data.last_page}</p>
 
                 <div className='space-x-2'>
-                    <button  onClick={() => current > 1 && setCurrent(current-1)} className='px-3 py-2 bg-white shadow-xl rounded-lg'>
+                    <button disabled={isLoading} onClick={() => current > 1 && setCurrent(current-1)} className='px-3 py-2 bg-white shadow-xl rounded-lg'>
                         <ArrowLeftIcon className='h-4'/>
                     </button>
-                    <button onClick={() => current < data.last_page && setCurrent(current+1)} className='px-3 py-2 bg-white shadow-xl rounded-lg'>
+                    <button disabled={isLoading}onClick={() => current < data.last_page && setCurrent(current+1)} className='px-3 py-2 bg-white shadow-xl rounded-lg'>
                         <ArrowRightIcon className='h-4'/>
                     </button>
                 </div>

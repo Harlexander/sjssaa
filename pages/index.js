@@ -8,15 +8,17 @@ import GallerySection from '../components/Gallery/GallerySection'
 import HeroSection from '../components/HeroSection/HeroSection'
 import IndexNavbar from '../components/Navbar/Navbar'
 import ResponsilbiltySection from '../components/Responsibility/ResponsilbiltySection'
-import ElectionSection from '../components/Election/ElectionSection'
+import { useQuery } from 'react-query'
+import { api } from '../lib/axios'
 
 export default function Index() {
+
   return (
     <>
       <IndexNavbar/>
       <HeroSection/>
       <AboutSection/>
-      <ElectionSection/>
+      {/* <ElectionSection/> */}
       <GallerySection/>
       <ResponsilbiltySection/>
       <EventSection/>

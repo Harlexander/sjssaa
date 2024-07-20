@@ -20,13 +20,13 @@ const Index = () => {
               <p className='py-4'>If you have any queries or questions about St. Joseph Secondary School Alumni Association, please email us or call the secretary at +234 810 3562 7282. We would get back to you as soon as possible. Issues are only addressed to on weekdays only.</p>
              
              <div>
-              <p className='text-lg font-bold'>Israel Alika-John</p>
+              <p className='text-lg font-bold'>Monday Udo</p>
               <p> General Secretary</p>
               {/* <a href='mailto:israelolusegun.alika@sjssaa.com	' className='text-blue-700 underline'>israelolusegun.alika@sjssaa.com	</a> */}
              </div>
             
              <div>
-              <p className='text-lg font-bold'>Henry Nkatta</p>
+              <p className='text-lg font-bold'>Fatiu Bello Olaitan</p>
               <p>Public Relations Officer</p>
               {/* <a href='mailto:nwankantta@sjssaa.com	' className='text-blue-700 underline'>nwankantta@sjssaa.com	</a> */}
              </div>

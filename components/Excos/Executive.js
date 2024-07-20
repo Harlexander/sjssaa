@@ -3,30 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { SolidButton } from '../Button/Button'
 import ExecutiveContainer from './ExecutiveContainer'
-
-const executiveData = [
-  {
-    name: 'Kolawole Banire',
-    img: '',
-    bio: 'I am interested in rendering service for our great school first or with the first; I believe my experience coupled with my interpersonal abilities would make me a strong fit for this position.',
-    mail: 'kolawole.banire@sjssaa.com',
-    position: 'President',
-  },
-  {
-    name: 'Israel Olusegun Alika',
-    img: '../general secretary.png',
-    bio: 'A team work aim to design, build and develop the association for the progress, fairness, justice and benefits of all SJSSA members.',
-    mail: 'lanreare@sjssaa.com',
-    position: 'Vice President Nigeria',
-  },
-  {
-    name: 'Jacob Babatunde Ajayi',
-    img: '../vp.png',
-    bio: 'I am an outstanding team player and possess good communication skills. I am hardworking, very well organized, and self-confident.',
-    mail: 'jb.ajayi@sjssaa.com',
-    position: 'Vice President Europe and Asia',
-  },
-];
+import { executiveData } from '../../pages/excos/national-executives'
 
 const Executive = () => {
   return (
@@ -37,7 +14,7 @@ const Executive = () => {
 
         <div className='w-full md:px-32 space-y-12'>
             {
-              executiveData.map((executive, index) => (
+              executiveData.map((executive, index) => index <= 2 && (
                 <>
                 <ExecutiveContainer 
                     {...executive}

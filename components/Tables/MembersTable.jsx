@@ -34,7 +34,7 @@ const MembersTable = ({admin, data, isLoading}) => {
                         <td className='py-4 whitespace-nowrap pr-4'>{item.firstName} {item.lastName}</td>
                         <td className='py-4 whitespace-nowrap pr-4'>{item.email}</td>
                         <td className='py-4 whitespace-nowrap pr-4'>{item.set}</td>
-                        <td className='py-4 whitespace-nowrap pr-4'>{moment(item.created_at).format(" Do MMMM, YYY")}</td>
+                        <td className='py-4 whitespace-nowrap pr-4'>{moment(item.created_at).format("Do MMM YYYY")}</td>
                         <td className='py-4 whitespace-nowrap pr-4'>{item.city}</td>
                         {
                             admin && (
@@ -116,74 +116,6 @@ function Manage() {
                         />
                       )}
                       Edit
-                    </button>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active ? 'bg-yellow-500 text-white' : 'text-gray-900'
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
-                      {active ? (
-                        <DuplicateActiveIcon
-                          className="mr-2 h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      ) : (
-                        <DuplicateInactiveIcon
-                          className="mr-2 h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      )}
-                      Duplicate
-                    </button>
-                  )}
-                </Menu.Item>
-              </div>
-              <div className="px-1 py-1">
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active ? 'bg-yellow-500 text-white' : 'text-gray-900'
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
-                      {active ? (
-                        <ArchiveActiveIcon
-                          className="mr-2 h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      ) : (
-                        <ArchiveInactiveIcon
-                          className="mr-2 h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      )}
-                      Archive
-                    </button>
-                  )}
-                </Menu.Item>
-                <Menu.Item>
-                  {({ active }) => (
-                    <button
-                      className={`${
-                        active ? 'bg-yellow-500 text-white' : 'text-gray-900'
-                      } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                    >
-                      {active ? (
-                        <MoveActiveIcon
-                          className="mr-2 h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      ) : (
-                        <MoveInactiveIcon
-                          className="mr-2 h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      )}
-                      Move
                     </button>
                   )}
                 </Menu.Item>

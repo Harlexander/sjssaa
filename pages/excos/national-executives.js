@@ -5,10 +5,10 @@ import UnderConstruction from '../../components/Header/UnderConstruction'
 import IndexNavbar from '../../components/Navbar/Navbar'
 
 
-const executiveData = [
+export const executiveData = [
   {
     name: 'Kolawole Banire',
-    img: '',
+    img: '/president.jpg',
     bio: 'I am interested in rendering service for our great school first or with the first; I believe my experience coupled with my interpersonal abilities would make me a strong fit for this position.',
     mail: 'kolawole.banire@sjssaa.com',
     position: 'President',
@@ -29,14 +29,14 @@ const executiveData = [
   },
   {
     name: 'Solomon Oyedeji',
-    img: '',
+    img: '/vp-america.jpg',
     bio: 'Passion to serve SJSSAA',
     mail: 'oorekoya@sjssaa.com',
     position: 'Vice President America',
   },
   {
     name: 'Monday Udo',
-    img: '',
+    img: '/general.sec.jpg',
     bio: '',
     mail: 'israelolusegun.alika@sjssaa.com',
     position: 'General Secretary',
@@ -50,7 +50,7 @@ const executiveData = [
   },
   {
     name: 'Anthony Ebhojaye',
-    img: '',
+    img: '/asst.sec.north.jpg',
     bio: 'Passion to serve SJSSAA',
     mail: 'anthony.ebhojaye@sjssaa.com',
     position: 'Asst. Sect North and South America',
@@ -71,7 +71,7 @@ const executiveData = [
   },
   {
     name: 'Olanrewaju Dossouyovo',
-    img: '',
+    img: '/social.sect.jpg',
     bio: 'Passion to serve SJSSAA',
     mail: 'ola.dossouyovo@sjssaa.com',
     position: 'Social Secretary',
@@ -85,14 +85,14 @@ const executiveData = [
   },
   {
     name: 'Jolaosho Adewale',
-    img: '',
+    img: '/asst.fin.jpg',
     bio: 'Passion to serve SJSSAA',
     mail: 'jolaoshoadewale@sjssaa.com',
     position: 'Asst. Fin. Secretary',
   },
   {
     name: 'Samuel Afekhade',
-    img: '',
+    img: '/asst.social.jpg',
     bio: 'Passion to serve SJSSAA',
     mail: 'samuel.afe@sjssaa.com',
     position: 'Asst. Social Secretary',

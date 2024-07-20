@@ -58,8 +58,6 @@ const EventsTable = ({data, isLoading}) => {
 export default EventsTable;
 
 export const AdminEventsTable = ({data = []}) => {
-    console.log(data);
-
     return (
       <div className='bg-white p-4 shadow-xl rounded-lg overflow-x-auto'>
           <table className='table-responsive w-full divide-y'>

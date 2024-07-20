@@ -25,7 +25,7 @@ const FooterSection = () => {
                         <li><a href='tel:+2348142676712' className='hover:text-yellow-900 hover:font-bold'>+2348142676712 (P.R.O)</a></li>
                         <li><a href='mailto:israelolusegun.alika@sjssaa.com' className='hover:text-yellow-900 hover:font-bold'>israelolusegun.alika@sjssaa.com</a></li>
                         <li><a href='mailto:dom@sjssaa.com' className='hover:text-yellow-900 hover:font-bold'>dom@sjsss.com</a></li>
-                        <li><a href='mailto:nwankantta@sjssaa.com' className='hover:text-yellow-900 hover:font-bold'>nwankantta@sjssaa.com</a></li>
+                        {/* <li><a href='mailto:nwankantta@sjssaa.com' className='hover:text-yellow-900 hover:font-bold'>nwankantta@sjssaa.com</a></li> */}
                     </ul>
                 </div>
                 <div className='col-1'>

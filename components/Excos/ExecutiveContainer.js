@@ -6,7 +6,7 @@ const ExecutiveContainer = ({name, position, bio, mail, img}) => {
   return (
     <div className='md:grid grid-cols-12 gap-10 space-y-5 md:space-y-0'>
         <div className='col-span-3'>
-            <img src={img} className='h-60 w-60 mx-auto rounded-lg md:rounded-full'/>
+            <img src={img} className='h-60 w-60 object-cover mx-auto rounded-lg md:rounded-full'/>
         </div>
         <div className='md:text-left text-center col-span-9 flex-col flex space-y-2 justify-center'>
             <p className='font-primary text-3xl capitalize'>{name}</p>

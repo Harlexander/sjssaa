@@ -3,7 +3,7 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import DashboardHeader from "../components/DashboardHeader/DashboardHeader";
 import { ArrowRightCircleIcon, CreditCardIcon, CurrencyDollarIcon, DocumentDuplicateIcon, ExclamationCircleIcon, HomeIcon, UserCircleIcon, UserPlusIcon } from "@heroicons/react/24/outline";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays, faCashRegister, faChartArea, faCube, faEnvelope, faHeadphones, faHeart, faHomeAlt, faMoneyCheckDollar, faNewspaper, faStar, faUpload, faUser, faUserAlt, faUserCheck, faUserDoctor, faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays, faCashRegister, faChartArea, faCog, faCube, faEnvelope, faHeadphones, faHeart, faHomeAlt, faMoneyCheckDollar, faNewspaper, faStar, faUpload, faUser, faUserAlt, faUserCheck, faUserDoctor, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { UserProvider } from "../lib/user";
 
 const user = {
@@ -29,11 +29,6 @@ const navigation = [
     href: '/admin/payments', 
     icon:  <FontAwesomeIcon icon={faMoneyCheckDollar}/>, current: true 
   },
-  // { 
-  //   name: 'Election', 
-  //   href: '/admin/election', 
-  //   icon:  <FontAwesomeIcon icon={faUserGroup}/>, current: true 
-  // },
   { 
     name: 'Events', 
     href: '/admin/events', 
@@ -48,6 +43,11 @@ const navigation = [
     name: 'Job Board', 
     href: '/admin/job-board', 
     icon:  <FontAwesomeIcon icon={faUserDoctor}/>, current: true 
+  },
+  { 
+    name: 'Website Settings', 
+    href: '/admin/settings', 
+    icon:  <FontAwesomeIcon icon={faCog}/>, current: true 
   },
 ]
 

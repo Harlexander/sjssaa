@@ -92,7 +92,7 @@ function MyModal() {
     const {data} = await api.get("/due-status" , { headers : { Authorization : `Bearer ${token}`} } )
   
     return data;
-  }, { enabled : (token !== null), onSuccess : (data) => !data && setIsOpen(true), retry : 0 });
+  }, { enabled : (token !== null), onSuccess : (data) => !data && setIsOpen(false), retry : 0 });
 
   function closeModal() {
     setIsOpen(true)

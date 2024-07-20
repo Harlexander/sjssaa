@@ -89,6 +89,7 @@ const Button = ({handleSubmit, isLoading}) => (
     <button
     onClick={handleSubmit}
     type="button"
+    disabled={isLoading}
     className="inline-flex text-white font-figtree justify-center rounded-md border border-transparent bg-pry px-4 py-2 text-sm font-medium hover:bg-yellow-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-pry focus-visible:ring-offset-2"
   >
     {
